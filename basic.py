@@ -24,3 +24,7 @@ def sameCharInWord():
 
     print(same)
     return same
+
+
+if __name__ == '__main__':
+    sameCharInWord()

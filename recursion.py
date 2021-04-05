@@ -28,17 +28,17 @@ class tree():
         self.t.pendown()
         self.t.pencolor('green')
         self.t.pensize(2)
-        self.drawTree(75)
+        self.drawTree(75, 2)
         self.t.hideturtle()
         turtle.done()
 
-    def drawTree(self, len_):
-        if len_ > 2:
+    def drawTree(self, len_, min_):
+        if len_ > min_:
             self.t.forward(len_)
             self.t.right(15)
-            self.drawTree(len_ - 5)
+            self.drawTree(len_ - 5, min_)
             self.t.left(30)
-            self.drawTree(len_ - 5)
+            self.drawTree(len_ - 5, min_)
             self.t.right(15)
             self.t.backward(len_)
 
