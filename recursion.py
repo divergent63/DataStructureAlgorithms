@@ -1,3 +1,16 @@
+"""
+递归三要素：
+    1. 问题规模减小
+    2. 存在结束条件
+    3. 必须调用自身 <自相似性>
+
+问题规模缩小的情况：
+    1. 链表节点越来越少
+    2. 求和、积等问题中因数越来越少，计算式越来越短
+    3.
+
+"""
+
 import turtle
 
 
@@ -43,22 +56,86 @@ class tree():
             self.t.backward(len_)
 
 
-# class sierpinski():
-#     def __init__(self, n):
-#         self.t = turtle.Turtle()
-#         self.points = {'left': (-200, -100), 'top': (0, 200), 'right': (200, -100)}
-#
-#         self.singleDraw(color)
-#         turtle.done()
-#         pass
-#
-#     def singleDraw(self, color):
-#         self.t.fillcolor(color)
-#         pass
+class sierpinski():
+    def __init__(self, n):
+        self.color = None
+        self.t = turtle.Turtle()
+        self.points = {'left': (-400, -300), 'top': (200, 300), 'right': (400, -300)}
+        ps = self.points
+        self.recursion(n, ps)
+        turtle.done()
+        pass
+
+    def singleDraw(self, points_in):
+        self.t.fillcolor(self.color)
+        self.t.penup()
+        self.t.goto(points_in['top'])
+        self.t.pendown()
+        self.t.begin_fill()
+        self.t.goto(points_in['left'])
+        self.t.goto(points_in['right'])
+        self.t.goto(points_in['top'])
+        self.t.end_fill()
+        pass
+
+    def recursion(self, n, ps):
+        color_map = ['blue', 'red', 'green', 'white', 'yellow', 'orange']
+        if n < len(color_map):
+            self.color = color_map[n]
+        else:
+            self.color = color_map[n%len(color_map)]
+        self.singleDraw(ps)
+
+        if n > 0:           # 结束条件
+            # 绘制左下角的三角形
+            if n < len(color_map):
+                self.color = color_map[n-1]
+            else:
+                self.color = color_map[n % len(color_map)-1]
+            pst = ((ps['top'][0] + ps['left'][0]) / 2, (ps['top'][1] + ps['left'][1]) / 2)
+            psr = ((ps['right'][0] + ps['left'][0]) / 2, (ps['right'][1] + ps['left'][1]) / 2)
+            psl = ps['left']
+
+            # 调用自身
+            self.recursion(
+                n - 1,          # 规模减小
+                {'top': pst, 'right': psr, 'left': psl}
+            )            # self.singleDraw()
+
+            # 绘制顶部的三角形
+            if n < len(color_map):
+                self.color = color_map[n-1]
+            else:
+                self.color = color_map[n % len(color_map)-1]
+            pst = ps['top']
+            psr = ((ps['top'][0] + ps['right'][0]) / 2, (ps['top'][1] + ps['right'][1]) / 2)
+            psl = ((ps['top'][0] + ps['left'][0]) / 2, (ps['top'][1] + ps['left'][1]) / 2)
+
+            self.recursion(
+                n - 1,
+                {'top': pst, 'right': psr, 'left': psl}
+            )            # self.singleDraw()
+
+            # 绘制右下角的三角形
+            if n < len(color_map):
+                self.color = color_map[n-1]
+            else:
+                self.color = color_map[n % len(color_map)-1]
+            pst = ((ps['top'][0] + ps['right'][0]) / 2, (ps['top'][1] + ps['right'][1]) / 2)
+            psr = ps['right']
+            psl = ((ps['right'][0] + ps['left'][0]) / 2, (ps['right'][1] + ps['left'][1]) / 2)
+            self.recursion(
+                n - 1,
+                {'top': pst, 'right': psr, 'left': psl}
+            )
+            # self.singleDraw()
 
 
 if __name__ == '__main__':
     # print(continue_sum([i*2+1 for i in range(2)]))
     # print(baseTransfer(2414, 2))
 
-    tree()
+    # tree()
+    spsk = sierpinski(8)
+
+    pass

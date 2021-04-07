@@ -28,7 +28,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.nowcoderds">
+  <component name="RunManager" selected="Python.recursion">
     <configuration name="basic" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DataStructureAlgorithms" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -136,9 +136,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.recursion" />
         <item itemvalue="Python.nowcoderds" />
         <item itemvalue="Python.linearTable" />
-        <item itemvalue="Python.recursion" />
         <item itemvalue="Python.stack" />
         <item itemvalue="Python.basic" />
       </list>
@@ -173,8 +173,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/nowcoderds.py</url>
-          <line>148</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nowcoderds.py</url>
+          <line>151</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
