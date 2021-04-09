@@ -9,6 +9,7 @@
     2. 求和、积等问题中因数越来越少，计算式越来越短
     3.
 
+递归 --属于--> 分治策略 --改进--> 贪婪策略
 """
 
 import turtle
@@ -131,11 +132,48 @@ class sierpinski():
             # self.singleDraw()
 
 
+class minClassCoins():
+    def __init__(self, coinClassLst, maxCoinVal):
+        self.coinClassLst = coinClassLst
+        self.coinClassLst.sort()
+        self.maxCoinVal = maxCoinVal
+
+        pass
+
+    def greedyPolicy(self):
+        coin = min(max(self.coinClassLst), self.maxCoinVal)
+        coin_match = 0
+
+        changed = 0
+        while True:
+            # coin *= cnt
+            coin_match += coin
+
+            if coin_match > self.maxCoinVal:
+                coin_match = coin_match - coin
+                changed += 1
+                del self.coinClassLst[-1]
+                coin = min(max(self.coinClassLst), self.maxCoinVal)
+
+            if coin_match == self.maxCoinVal:
+                return changed
+
+        pass
+
+    def recursionCall(self):
+
+        pass
+
+
 if __name__ == '__main__':
     # print(continue_sum([i*2+1 for i in range(2)]))
     # print(baseTransfer(2414, 2))
 
     # tree()
-    spsk = sierpinski(8)
 
+    # spsk = sierpinski(8)
+
+    print(
+        minClassCoins([1, 5, 10, 25], 63).greedyPolicy()
+    )
     pass

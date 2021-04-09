@@ -35,7 +35,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.queue_test">
+  <component name="RunManager" selected="Python.recursion">
     <configuration name="nowcoderds" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DataStructureAlgorithms" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -143,10 +143,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.recursion" />
         <item itemvalue="Python.queue_test" />
         <item itemvalue="Python.stack" />
         <item itemvalue="Python.queue" />
-        <item itemvalue="Python.recursion" />
         <item itemvalue="Python.nowcoderds" />
       </list>
     </recent_temporary>
@@ -198,6 +198,16 @@
           <url>file://$PROJECT_DIR$/queue_test.py</url>
           <line>62</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/recursion.py</url>
+          <line>154</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/recursion.py</url>
+          <line>151</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
