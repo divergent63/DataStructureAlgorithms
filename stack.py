@@ -1,4 +1,16 @@
 
+class bugClass(object):
+    def __init__(self):
+        self.a = [1, 2]
+        print(self.a)
+        self.bug1()
+
+    def bug1(self):
+        b = self.a
+        b[0] = 0
+        print(b, self.a)            # TODO: why self.a changes with b ?? How to FIX it ??
+
+
 class stack():
     def __init__(self):
         self.stack_lst = []
@@ -17,6 +29,12 @@ class stack():
 
     def size(self):
         return len(self.stack_lst)
+
+    def min(self):
+        if self.stack_lst is not None:
+            return min(self.stack_lst)
+        else:
+            return None
 
 
 def simpleTest():
@@ -114,5 +132,12 @@ def suffixVal(eq_str):
 
 
 if __name__ == '__main__':
-    print(suffixVal('34*5+'), suffixVal('345*+'), suffixVal('345*+6-'))
+    # print(suffixVal('34*5+'), suffixVal('345*+'), suffixVal('345*+6-'))
+
+    s = stack()
+    for xi in ["PSH3","MIN","PSH4","MIN","PSH2","MIN","PSH3","MIN","POP","MIN","POP","MIN","POP","MIN","PSH0","MIN"]:
+        s.push(xi)
+    print(s.min())
+
+    # bugClass()
     pass
