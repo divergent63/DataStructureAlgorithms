@@ -133,34 +133,63 @@ class sierpinski():
 
 
 class minClassCoins():
-    def __init__(self, coinClassLst, maxCoinVal):
+    def __init__(self, coinClassLst):
         self.coinClassLst = coinClassLst
         self.coinClassLst.sort()
-        self.maxCoinVal = maxCoinVal
+        # self.maxCoinVal = maxCoinVal
+        self.changed_recursion = 0
 
         pass
 
-    def greedyPolicy(self):
-        coin = min(max(self.coinClassLst), self.maxCoinVal)
+    def greedyPolicy(self, maxCoinVal):
+        coin = min(max(self.coinClassLst), maxCoinVal)
         coin_match = 0
 
         changed = 0
+        changed_lst = []
         while True:
             # coin *= cnt
             coin_match += coin
-
-            if coin_match > self.maxCoinVal:
+            changed += 1
+            changed_lst.append(coin)
+            if coin_match > maxCoinVal:
                 coin_match = coin_match - coin
-                changed += 1
                 del self.coinClassLst[-1]
-                coin = min(max(self.coinClassLst), self.maxCoinVal)
+                coin = min(max(self.coinClassLst), maxCoinVal)
+                changed -= 1
+                del changed_lst[-1]
 
-            if coin_match == self.maxCoinVal:
+            if coin_match == maxCoinVal:
+                print(changed_lst)
                 return changed
 
-        pass
+    def recursionCall(self, maxCoinVal):
+        """
+        TODO: fuck can't understand ...
+        :param maxCoinVal:
+        :return:
+        """
+        coinLst = [c for c in self.coinClassLst if c <= maxCoinVal]
+        coinLst.reverse()
 
-    def recursionCall(self):
+        if maxCoinVal in self.coinClassLst:
+            return self.changed_recursion
+        else:
+            for i, x in enumerate(coinLst):
+                self.changed_recursion = 1 + self.recursionCall(maxCoinVal-x)
+                if maxCoinVal - x < 0:
+                    pass
+                # if maxCoinVal > x:
+                #     maxCoinVal = maxCoinVal - x
+                #     self.recursionCall(maxCoinVal)
+                # elif i < len(self.coinClassLst)-1:
+                #     self.changed_recursion += 1
+                #     maxCoinVal = maxCoinVal + x - self.coinClassLst[i+1]
+                #     # self.recursionCall(maxCoinVal)
+
+        return self.changed_recursion
+
+    def dynamicPrograming(self, maxCoinVal):
 
         pass
 
@@ -174,6 +203,7 @@ if __name__ == '__main__':
     # spsk = sierpinski(8)
 
     print(
-        minClassCoins([1, 5, 10, 25], 63).greedyPolicy()
+        minClassCoins([1, 5, 10, 25]).greedyPolicy(63),
+        # minClassCoins([1, 5, 10, 25]).recursionCall(63)
     )
     pass
