@@ -169,29 +169,63 @@ class minClassCoins():
         :param maxCoinVal:
         :return:
         """
-        coinLst = [c for c in self.coinClassLst if c <= maxCoinVal]
-        coinLst.reverse()
-
+        # coinLst = [c for c in self.coinClassLst if c <= maxCoinVal]
+        # coinLst.reverse()
+        #
+        # if maxCoinVal in self.coinClassLst:
+        #     return self.changed_recursion
+        # else:
+        #     for i, x in enumerate(coinLst):
+        #         self.changed_recursion = 1 + self.recursionCall(maxCoinVal-x)
+        #         if maxCoinVal - x < 0:
+        #             pass
+        #         # if maxCoinVal > x:
+        #         #     maxCoinVal = maxCoinVal - x
+        #         #     self.recursionCall(maxCoinVal)
+        #         # elif i < len(self.coinClassLst)-1:
+        #         #     self.changed_recursion += 1
+        #         #     maxCoinVal = maxCoinVal + x - self.coinClassLst[i+1]
+        #         #     # self.recursionCall(maxCoinVal)
+        #
+        # return self.changed_recursion
+        minCoins = maxCoinVal
         if maxCoinVal in self.coinClassLst:
-            return self.changed_recursion
+            return 1  # 最小规模，直接返回。
         else:
-            for i, x in enumerate(coinLst):
-                self.changed_recursion = 1 + self.recursionCall(maxCoinVal-x)
-                if maxCoinVal - x < 0:
-                    pass
-                # if maxCoinVal > x:
-                #     maxCoinVal = maxCoinVal - x
-                #     self.recursionCall(maxCoinVal)
-                # elif i < len(self.coinClassLst)-1:
-                #     self.changed_recursion += 1
-                #     maxCoinVal = maxCoinVal + x - self.coinClassLst[i+1]
-                #     # self.recursionCall(maxCoinVal)
-
-        return self.changed_recursion
+            for i in [c for c in self.coinClassLst if c <= maxCoinVal]:
+                # if i == 5:
+                #     print(i)
+                numCoins = 1 + self.recursionCall(maxCoinVal - i)  # 调用自身和减少规模。
+                if numCoins < minCoins:
+                    minCoins = numCoins
+        return minCoins
 
     def dynamicPrograming(self, maxCoinVal):
 
         pass
+
+#
+# # 递归解决找零问题v1。
+# import time
+# start = time.time()
+# def recMC(coinValueList, change):
+#     minCoins = change
+#     if change in coinValueList:
+#         return 1  # 最小规模，直接返回。
+#     else:
+#         for i in [c for c in coinValueList if c <= change]:
+#             numCoins = 1 + recMC(coinValueList, change - i)  # 调用自身和减少规模。
+#             if numCoins < minCoins:
+#                 minCoins = numCoins
+#     return minCoins
+#
+# print(recMC([1, 5, 10, 25], 63))
+# end = time.time()
+# print(f"运行本递归程序一共用了{end - start}秒。")
+# # <<<
+# # 6
+# # 运行本递归程序一共用了37.6766254901886秒。
+# # <<<
 
 
 if __name__ == '__main__':
@@ -203,7 +237,9 @@ if __name__ == '__main__':
     # spsk = sierpinski(8)
 
     print(
-        minClassCoins([1, 5, 10, 25]).greedyPolicy(63),
-        # minClassCoins([1, 5, 10, 25]).recursionCall(63)
+        # minClassCoins([1, 5, 10, 21, 25]).greedyPolicy(63),           # wrong answer: 6
+        # minClassCoins([1, 5, 10, 25]).greedyPolicy(63),
+        minClassCoins([1, 5, 10, 21, 25]).recursionCall(63),
+        minClassCoins([1, 5, 10, 25]).recursionCall(26)
     )
     pass
