@@ -239,7 +239,7 @@ if __name__ == '__main__':
     print(
         # minClassCoins([1, 5, 10, 21, 25]).greedyPolicy(63),           # wrong answer: 6
         # minClassCoins([1, 5, 10, 25]).greedyPolicy(63),
-        minClassCoins([1, 5, 10, 21, 25]).recursionCall(63),
+        # minClassCoins([1, 5, 10, 21, 25]).recursionCall(63),
         minClassCoins([1, 5, 10, 25]).recursionCall(26)
     )
     pass
