@@ -47,15 +47,15 @@ class Solution:
                     str_lst.pop(0)
                     pattern_lst.pop(0)
                 #################TODO#############################################
-                #                 elif pattern_lst[0] == '*':
-                #                     while len(pattern_lst) != len(str_lst)+1:
-                #                         tmp = pattern_lst.pop(1)
-                #                         if tmp != pattern_lst[1]:
-                #                             if len(pattern_lst) <= 1:
-                #                                 return False
-                #                     pattern_lst.pop(0)
-                #                     if pattern_lst == str_lst:
-                #                         return True
+                # elif pattern_lst[0] == '*':
+                #     while len(pattern_lst) != len(str_lst)+1:
+                #         tmp = pattern_lst.pop(1)
+                #         if tmp != pattern_lst[1]:
+                #             if len(pattern_lst) <= 1:
+                #                 return False
+                #     pattern_lst.pop(0)
+                #     if pattern_lst == str_lst:
+                #         return True
                 #################TODO#############################################
                 else:
                     return False

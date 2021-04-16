@@ -2,7 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c56797c6-8b88-44bc-ba8b-ce972611e4f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/str_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algo_dynamicPrograming.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algo_recursion.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algo_searchAndLocate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algo_sort.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/linearTable_dst.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nonLinearTable_dst.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/queue_dst.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stack_dst.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/string_dst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dynamicPrograming.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linearTable.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nowcoderds.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/queue_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recursion.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchAndFind.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/str_test.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,11 +49,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="697" />
-    <option name="height" value="735" />
   </component>
   <component name="ProjectId" id="1qkrlVI2OnKz3T3bPyJag4fueyK" />
   <component name="PropertiesComponent">
@@ -210,45 +223,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nowcoderds.py</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nowcoderds.py</url>
-          <line>151</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/queue_test.py</url>
-          <line>91</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/queue_test.py</url>
-          <line>62</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/sort.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/sort.py</url>
-          <line>17</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/sort.py</url>
-          <line>15</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
