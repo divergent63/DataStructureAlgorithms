@@ -2,25 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c56797c6-8b88-44bc-ba8b-ce972611e4f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/algo_dynamicPrograming.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algo_recursion.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algo_searchAndLocate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algo_sort.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/linearTable_dst.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nonLinearTable_dst.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/queue_dst.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stack_dst.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/string_dst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dynamicPrograming.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/linearTable.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nowcoderds.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/queue_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/recursion.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchAndFind.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sort.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stack.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/str_test.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/DST_HashTable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algo_recursion.py" beforeDir="false" afterPath="$PROJECT_DIR$/ALGO_Recursion.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +51,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.sort">
+  <component name="RunManager" selected="Python.ALGO_Recursion">
+    <configuration name="ALGO_Recursion" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DataStructureAlgorithms" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ALGO_Recursion.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="queue_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DataStructureAlgorithms" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -156,42 +160,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="stack" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DataStructureAlgorithms" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/stack.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.queue_test" />
       <item itemvalue="Python.recursion" />
-      <item itemvalue="Python.stack" />
       <item itemvalue="Python.searchAndFind" />
       <item itemvalue="Python.sort" />
+      <item itemvalue="Python.ALGO_Recursion" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ALGO_Recursion" />
         <item itemvalue="Python.sort" />
         <item itemvalue="Python.searchAndFind" />
         <item itemvalue="Python.recursion" />
         <item itemvalue="Python.queue_test" />
-        <item itemvalue="Python.stack" />
       </list>
     </recent_temporary>
   </component>

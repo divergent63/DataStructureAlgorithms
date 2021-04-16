@@ -234,7 +234,7 @@ if __name__ == '__main__':
 
     # tree()
 
-    # spsk = sierpinski(8)
+    # spsk = sierpinski(3)
 
     print(
         # minClassCoins([1, 5, 10, 21, 25]).greedyPolicy(63),           # wrong answer: 6
