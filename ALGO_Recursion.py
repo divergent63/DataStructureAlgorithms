@@ -201,8 +201,14 @@ class minClassCoins():
         return minCoins
 
     def dynamicPrograming(self, maxCoinVal):
-
-        pass
+        memory = [0]*(maxCoinVal+1)
+        for cent in range(1, maxCoinVal+1):
+            minCoinCount = cent
+            for coin in [c for c in self.coinClassLst if c <= cent]:
+                if memory[cent-coin] < minCoinCount:           # 试探取不同的coin对最小硬币数目minCoinCount的影响，如果当前记忆memory[cent-coin]小于最小数目，则更新最小数目为当前记忆+1次兑换
+                    minCoinCount = memory[cent-coin]+1              # 更新最小数目为当前记忆+1次兑换
+            memory[cent] = minCoinCount
+        return memory[maxCoinVal]
 
 #
 # # 递归解决找零问题v1。
@@ -240,6 +246,7 @@ if __name__ == '__main__':
         # minClassCoins([1, 5, 10, 21, 25]).greedyPolicy(63),           # wrong answer: 6
         # minClassCoins([1, 5, 10, 25]).greedyPolicy(63),
         # minClassCoins([1, 5, 10, 21, 25]).recursionCall(63),
-        minClassCoins([1, 5, 10, 25]).recursionCall(26)
+        # minClassCoins([1, 5, 10, 25]).recursionCall(26)
+        minClassCoins([1, 5, 10, 21, 25]).dynamicPrograming(63)
     )
     pass

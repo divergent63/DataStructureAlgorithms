@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c56797c6-8b88-44bc-ba8b-ce972611e4f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DST_HashTable.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algo_recursion.py" beforeDir="false" afterPath="$PROJECT_DIR$/ALGO_Recursion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ALGO_DnamicPrograming.py" beforeDir="false" afterPath="$PROJECT_DIR$/ALGO_DynamicPrograming.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ALGO_Recursion.py" beforeDir="false" afterPath="$PROJECT_DIR$/ALGO_Recursion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DST_HashTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/DST_HashTable.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
