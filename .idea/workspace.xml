@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c56797c6-8b88-44bc-ba8b-ce972611e4f6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/DST_Tree.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DST_HashTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/DST_HashTable.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +51,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.DST_HashTable">
+  <component name="RunManager" selected="Python.DST_Tree">
     <configuration name="ALGO_Recursion" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DataStructureAlgorithms" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -94,7 +94,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="recursion" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="DST_Tree" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DataStructureAlgorithms" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -106,8 +106,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/recursion.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DST_Tree.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -160,19 +159,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.recursion" />
       <item itemvalue="Python.searchAndFind" />
       <item itemvalue="Python.sort" />
       <item itemvalue="Python.ALGO_Recursion" />
       <item itemvalue="Python.DST_HashTable" />
+      <item itemvalue="Python.DST_Tree" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.DST_Tree" />
         <item itemvalue="Python.DST_HashTable" />
         <item itemvalue="Python.ALGO_Recursion" />
         <item itemvalue="Python.sort" />
         <item itemvalue="Python.searchAndFind" />
-        <item itemvalue="Python.recursion" />
       </list>
     </recent_temporary>
   </component>
@@ -222,6 +221,36 @@
           <url>file://$PROJECT_DIR$/DST_HashTable.py</url>
           <line>114</line>
           <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DST_Tree.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DST_Tree.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DST_Tree.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DST_Tree.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DST_Tree.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DST_Tree.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
