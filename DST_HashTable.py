@@ -90,6 +90,83 @@ class HashTable():
             return False
 
 
+########################################################################################################################
+# https://www.nowcoder.com/practice/389fc1c3d3be4479a154f63f495abff8?tpId=13&tqId=11193&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&tab=answerKey
+# 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+#
+#
+# @param array int整型一维数组
+# @return int整型一维数组
+#
+# class Solution:
+#     def FindNumsAppearOnce(self , array ):
+#         # write code here
+#         size = 11
+#         slots = [None] * size
+#         values = [None] * size
+#         for ai in array:
+#             slot = ai % size
+#             if slots[slot] is None and values[slot] is None:
+#                 slots[slot] = ai
+#                 values[slot] = array.count(ai)
+#             elif slots[slot] is not None and slots[slot] == ai:
+#                 values[slot] = array.count(ai)
+#             else:
+#                 while slots[slot] is not None:
+#                     slot = (slot+1) % size
+#                 slots[slot] = ai
+#                 values[slot] = array.count(ai)
+#         reulsts = []
+#         for i in range(len(slots)):
+#             if values[i] == 1:
+#                 reulsts.append(slots[i])
+#         return reulsts
+
+class Solution:
+    def FindNumsAppearOnce(self, array):
+        # write code here
+        size = 5
+        slots = [None] * size
+        values = [None] * size
+        results = []
+        for ai in array:
+            slot = ai % size
+            if slots[slot] is None and values[slot] is None:
+                slots[slot] = ai
+                values[slot] = array.count(ai)
+            elif slots[slot] is not None and slots[slot] == ai:
+                values[slot] = array.count(ai)
+            else:
+                while slots[slot] is not None:
+                    slot = (slot + 1) % size
+                slots[slot] = ai
+                values[slot] = array.count(ai)
+            if values[slot] == 1:
+                results.append(slots[slot])
+                if len(results) == 2:
+                    return results
+
+
+# class Solution:
+#     def FindNumsAppearOnce(self , array ):
+#         # write code here
+#         ab = 0
+#         for item in array:
+#             ab = ab ^ item
+#         sep = 1
+#         while sep & ab == 0:
+#             sep = sep << 1
+
+#         a, b = 0, 0
+#         for item in array:
+#             if item & sep:
+#                 a = a^item
+#             else:
+#                 b = b^item
+#         return [a, b] if a < b else [b, a]
+########################################################################################################################
+
+
 if __name__ == '__main__':
     ht = HashTable()
     ht.put(22, 'cat')
