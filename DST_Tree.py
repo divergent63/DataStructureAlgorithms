@@ -36,8 +36,15 @@ class BinaryTree():
     def SetRootVal(self, NewVal):
         self.RootVal = NewVal
 
+    def preorder(self, tree):
+        # 前序遍历：根节点、左子树、右子树
+        if tree:
+            print(tree.RootVal)
+            self.preorder(tree.GetLeftChild())
+            self.preorder(tree.GetRightChild())
+
 
 if __name__ == '__main__':
     bt = BinaryTree(1).InsertLeft(3).InsertLeft(2).InsertRight(1.5)
-    print(bt.GetLeftChild().GetRootVal())
-    print()
+    # print(bt.GetLeftChild().GetRootVal())
+    print(bt.preorder(bt))
