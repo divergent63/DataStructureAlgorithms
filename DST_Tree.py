@@ -172,7 +172,69 @@ class TreeNode():
 
 
 class BinarySearchTree():
-    def __init__(self):
+    def __init__(self, root):
+        self.root = root
+        self.size = 0
+        pass
+
+    def _put(self, key, val, tnod):
+        if tnod is not None:
+            if tnod.key > key:
+                if tnod.left is not None:
+                    self._put(key, val, tnod.left)
+                elif tnod.left is None:
+                    tnod.left = TreeNode(key=key, val=val, left=None, right=None, parent=tnod)
+            elif tnod.key < key:
+                if tnod.right is not None:
+                    self._put(key, val, tnod.right)
+                elif tnod.right is None:
+                    tnod.right = TreeNode(key=key, val=val, left=None, right=None, parent=tnod)
+
+    def put(self, key, val):
+        """
+        troubles:
+            1. root:1 right:3的二叉搜索树，插入key为2的节点时应放在root:1的left节点还是right:3的left节点？2
+            2. _put函数的功能是什么? _put()函数返回结果如何传回put()函数;
+        :param key:
+        :param val:
+        :return:
+        """
+
+        if self.root is None:
+            self.root = TreeNode(key=key, val=val, left=None, right=None, parent=None)
+        else:
+            self._put(key, val, self.root)
+
+        self.size += 1
+
+    def __setitem__(self, key, value):
+        return self.put(key, value)
+
+    def _get(self, key, tnode):
+        if tnode is not None:
+            if tnode.key > key:
+                self._get(key, tnode.left)
+            elif tnode.key < key:
+                self._get(key, tnode.right)
+            elif tnode.key == key:          # TODO: tnode.key = 24, tnode.val = 6.2, but return None ???????
+                return tnode.val
+        else:
+            return None
+
+    def get(self, key):
+        if self.root is not None:
+            res = self._get(key, self.root)
+            if res is not None:
+                return res
+            else:
+                raise KeyError('key not exists in the BST')
+        else:
+            raise KeyError('key not exists in the BST')
+
+    def __getitem__(self, item):
+        return self.get(item)
+
+    def delete(self, key):
 
         pass
 
@@ -214,3 +276,33 @@ if __name__ == '__main__':
         bh2.Insert(x)
     bh3 = BinaryHeap()
     print(bh3.BuildHeap(lst))
+
+    """
+    KeyTree:     1                     
+              /     \
+             0       3
+                    /  \
+                   2    12
+                    \     \
+                     4     24
+                      \
+                       5
+                        \
+                         6
+    """
+    bh4 = TreeNode(1, 0.8, None, None, None)
+    bst = BinarySearchTree(bh4)
+    bst.put(0, 12.4)
+    bst.put(3, 2.4)
+    bst.put(2, 9.2)
+    bst.put(12, 8.2)
+    bst.put(4, 7.2)
+    bst.put(24, 6.2)
+    bst.put(5, 5.2)
+    bst.put(6, 4.2)
+
+    print(bst)
+    print(bst[1])
+    print(bst[24])
+    print(bst[0])
+    # print(bst[999])
