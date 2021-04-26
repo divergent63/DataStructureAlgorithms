@@ -7,6 +7,9 @@ See also DST_NonLinearTable.py
 二叉搜索树
 AVL树
 """
+import random
+
+
 class BinaryTree():
     def __init__(self, RootVal):
         self.RootVal = RootVal
@@ -175,7 +178,24 @@ class BinarySearchTree():
     def __init__(self, root):
         self.root = root
         self.size = 0
-        pass
+
+    def PreOrder(self, node):
+        if node:
+            print(node.key, node.val)
+            self.PreOrder(node.left)
+            self.PreOrder(node.right)
+
+    def MidOrder(self, node):
+        if node:
+            self.MidOrder(node.left)
+            print(node.key, node.val)
+            self.MidOrder(node.right)
+
+    def PostOrder(self, node):
+        if node:
+            self.PostOrder(node.left)
+            self.PostOrder(node.right)
+            print(node.key, node.val)
 
     def _put(self, key, val, tnod):
         if tnod is not None:
@@ -190,7 +210,7 @@ class BinarySearchTree():
                 elif tnod.right is None:
                     tnod.right = TreeNode(key=key, val=val, left=None, right=None, parent=tnod)
 
-    def put(self, key, val):
+    def Put(self, key, val):
         """
         troubles:
             1. root:1 right:3的二叉搜索树，插入key为2的节点时应放在root:1的left节点还是right:3的left节点？2
@@ -208,7 +228,7 @@ class BinarySearchTree():
         self.size += 1
 
     def __setitem__(self, key, value):
-        return self.put(key, value)
+        return self.Put(key, value)
 
     def _get(self, key, tnode):
         if tnode is not None:
@@ -217,24 +237,45 @@ class BinarySearchTree():
             elif tnode.key < key:
                 self._get(key, tnode.right)
             elif tnode.key == key:          # TODO: tnode.key = 24, tnode.val = 6.2, but return None ???????
-                return tnode.val
+                return tnode
         else:
             return None
 
     def get(self, key):
         if self.root is not None:
-            res = self._get(key, self.root)
+            res = self._get(key, self.root)         # TODO: tnod in self._get() is not None, but res is None ??????
             if res is not None:
-                return res
+                return res.val
             else:
                 raise KeyError('key not exists in the BST')
         else:
             raise KeyError('key not exists in the BST')
 
+    def GetUnrec(self, key):
+        pNode = self.root
+        if pNode:
+            # while pNode.right and pNode.left:
+            while True:
+                if pNode.key < key:
+                    pNode = pNode.right
+                elif pNode.key > key:
+                    pNode = pNode.left
+                elif pNode and pNode.key == key:
+                    return pNode.val
+                else:
+                    raise KeyError('key not exists in the BST')
+        else:
+            raise KeyError('key not exists in the BST')
+
     def __getitem__(self, item):
-        return self.get(item)
+        # return self.get(item)
+        return self.GetUnrec(item)
 
     def delete(self, key):
+
+        pass
+
+    def draw(self):
 
         pass
 
@@ -244,65 +285,88 @@ if __name__ == '__main__':
     # # print(bt.GetLeftChild().GetRootVal())
     # print(bt.preorder(bt))
 
-    """
-             0.5
-           /     \
-         1         3
-       /  \      /   \
-      2    5    6     7
-     / \ 
-    4  4.5
-    """
-    bh = BinaryHeap()
-    bh.DelMin()
-    [bh.Insert(i) for i in range(1, 8)]
-    bh.Insert(0.5)
-    bh.Insert(4.5)
+    # """
+    #          0.5
+    #        /     \
+    #      1         3
+    #    /  \      /   \
+    #   2    5    6     7
+    #  / \
+    # 4  4.5
+    # """
+    # bh = BinaryHeap()
+    # bh.DelMin()
+    # [bh.Insert(i) for i in range(1, 8)]
+    # bh.Insert(0.5)
+    # bh.Insert(4.5)
+    #
+    # """
+    #          1
+    #       /     \
+    #      2       3
+    #    /  \     /  \
+    #   4.5  5   6    7
+    #  /
+    # 4
+    # """
+    # bh.DelMin()
+    #
+    # bh2 = BinaryHeap()
+    # lst = [3, 7, 9, 5, 0.8, 4]
+    # for x in lst:
+    #     bh2.Insert(x)
+    # bh3 = BinaryHeap()
+    # print(bh3.BuildHeap(lst))
+    #
+    # """
+    # KeyTree:     1
+    #           /     \
+    #          0       3
+    #                 /  \
+    #                2    12
+    #                 \     \
+    #                  4     24
+    #                   \
+    #                    5
+    #                     \
+    #                      6
+    # """
+    # bh4 = TreeNode(1, 0.8, None, None, None)
+    # bst = BinarySearchTree(bh4)
+    # bst.put(0, 12.4)
+    # bst.put(3, 2.4)
+    # bst.put(2, 9.2)
+    # bst.put(12, 8.2)
+    # bst.put(4, 7.2)
+    # bst.put(24, 6.2)
+    # bst.put(5, 5.2)
+    # bst.put(6, 4.2)
+    #
+    # print(bst)
+    # bst.mid_order(bst.root)
+    # print()
+    # bst.pre_order(bst.root)
+    # print()
+    # bst.post_order(bst.root)
+    # print(bst[1])
+    # # print(bst[24])
+    # # print(bst[0])
+    # # print(bst[999])
 
-    """
-             1
-          /     \
-         2       3
-       /  \     /  \
-      4.5  5   6    7
-     / 
-    4  
-    """
-    bh.DelMin()
+    lst_k = list(range(1, 501, 2))
+    random.shuffle(lst_k)
+    lst_v = [random.gauss(0, 1) for _ in range(len(lst_k))]
 
-    bh2 = BinaryHeap()
-    lst = [3, 7, 9, 5, 0.8, 4]
-    for x in lst:
-        bh2.Insert(x)
-    bh3 = BinaryHeap()
-    print(bh3.BuildHeap(lst))
+    bh5 = TreeNode(3, random.gauss(0, 1), None, None, None)
+    bst = BinarySearchTree(bh5)
+    for i, k in enumerate(lst_k):
+        # bst.Put(k, lst_v[i])
+        bst[k] = lst_v[i]
 
-    """
-    KeyTree:     1                     
-              /     \
-             0       3
-                    /  \
-                   2    12
-                    \     \
-                     4     24
-                      \
-                       5
-                        \
-                         6
-    """
-    bh4 = TreeNode(1, 0.8, None, None, None)
-    bst = BinarySearchTree(bh4)
-    bst.put(0, 12.4)
-    bst.put(3, 2.4)
-    bst.put(2, 9.2)
-    bst.put(12, 8.2)
-    bst.put(4, 7.2)
-    bst.put(24, 6.2)
-    bst.put(5, 5.2)
-    bst.put(6, 4.2)
+    # bst.MidOrder(bst.root)
 
-    print(bst)
-    print(bst[1])
-    print(bst[24])
-    print(bst[0])
-    # print(bst[999])
+    # print(bst[3])
+    # print(bst.get(113))
+    print(bst.GetUnrec(113), bst[115])
+
+
