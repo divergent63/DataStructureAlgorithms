@@ -330,13 +330,11 @@ class BinarySearchTree():
                 node.parent.right = node_right
                 node_right.right = tmp
                 self._DeleteSituation1(node_right)
-                self.size -= 1
             elif node.key == node.parent.left.key:
                 tmp = node
                 node.parent.right = node_right
                 node_right.right = tmp
                 self._DeleteSituation1(node_right)
-                self.size -= 1
         else:           # node.parent 不存在，即node为根节点
             # node_right.left = node.left
             # node_right.right = node.right
@@ -429,30 +427,32 @@ if __name__ == '__main__':
     #     bh2.Insert(x)
     # bh3 = BinaryHeap()
     # print(bh3.BuildHeap(lst))
-    #
-    # """
-    # KeyTree:     1
-    #           /     \
-    #          0       3
-    #                 /  \
-    #                2    12
-    #                 \     \
-    #                  4     24
-    #                   \
-    #                    5
-    #                     \
-    #                      6
-    # """
-    # bh4 = TreeNode(1, 0.8, None, None, None)
-    # bst = BinarySearchTree(bh4)
-    # bst.put(0, 12.4)
-    # bst.put(3, 2.4)
-    # bst.put(2, 9.2)
-    # bst.put(12, 8.2)
-    # bst.put(4, 7.2)
-    # bst.put(24, 6.2)
-    # bst.put(5, 5.2)
-    # bst.put(6, 4.2)
+
+    """
+    KeyTree:      1
+               /     \
+             0         3
+                    /    \
+                   2      12
+                        /    \
+                       4     24
+                        \    /
+                         5  20
+                          \
+                           6
+    """
+    bh4 = TreeNode(1, 0.8, None, None, None)
+    bst = BinarySearchTree(bh4)
+    bst.Put(0, 12.4)
+    bst.Put(3, 2.4)
+    bst.Put(2, 9.2)
+    bst.Put(12, 8.2)
+    bst.Put(4, 7.2)
+    bst.Put(24, 6.2)
+    bst.Put(5, 5.2)
+    bst.Put(6, 4.2)
+    bst.Put(20, 111.2)
+
     #
     # print(bst)
     # bst.mid_order(bst.root)
@@ -465,15 +465,15 @@ if __name__ == '__main__':
     # # print(bst[0])
     # # print(bst[999])
 
-    lst_k = list(range(1, 501, 2))
-    random.shuffle(lst_k)
-    lst_v = [random.gauss(0, 1) for _ in range(len(lst_k))]
-
-    bh5 = TreeNode(3, random.gauss(0, 1), None, None, None)
-    bst = BinarySearchTree(bh5)
-    for i, k in enumerate(lst_k):
-        # bst.Put(k, lst_v[i])
-        bst[k] = lst_v[i]
+    # lst_k = list(range(1, 501, 2))
+    # random.shuffle(lst_k)
+    # lst_v = [random.gauss(0, 1) for _ in range(len(lst_k))]
+    #
+    # bh5 = TreeNode(3, random.gauss(0, 1), None, None, None)
+    # bst = BinarySearchTree(bh5)
+    # for i, k in enumerate(lst_k):
+    #     # bst.Put(k, lst_v[i])
+    #     bst[k] = lst_v[i]
 
     # bst.MidOrder(bst.root)
 
@@ -482,8 +482,10 @@ if __name__ == '__main__':
     # print(bst.GetUnrec(113), bst[115])
 
     print()
-    # bst.delete(1)
-    # bst.delete(11)
-    bst.delete(3)
+    # bst.delete(0)       # ds1
+    # bst.delete(4)       # ds2
+    # bst.delete(24)       # ds3
+    # bst.delete(3)       # ds4
+    bst.delete(1)       # ds4
     print()
 
