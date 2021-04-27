@@ -9,6 +9,8 @@ AVL树
 """
 import random
 
+# from DST_NonLinearTable import TreeNode
+
 
 class BinaryTree():
     def __init__(self, RootVal):
@@ -167,6 +169,7 @@ class BinaryHeap():
 
 class TreeNode():
     def __init__(self, key, val, right, left, parent):
+        # TreeNode.__init__(key)
         self.key = key
         self.val = val
         self.right = right
@@ -247,9 +250,25 @@ class BinarySearchTree():
             if res is not None:
                 return res.val
             else:
-                raise KeyError('key not exists in the BST')
+                raise KeyError('Key not exists in the BST')
         else:
-            raise KeyError('key not exists in the BST')
+            raise KeyError('Key not exists in the BST')
+
+    def GetUnrecNode(self, key):
+        pNode = self.root
+        if pNode:
+            # while pNode.right and pNode.left:
+            while True:
+                if pNode.key < key:
+                    pNode = pNode.right
+                elif pNode.key > key:
+                    pNode = pNode.left
+                elif pNode and pNode.key == key:
+                    return pNode
+                else:
+                    return
+        else:
+            return
 
     def GetUnrec(self, key):
         pNode = self.root
@@ -263,20 +282,113 @@ class BinarySearchTree():
                 elif pNode and pNode.key == key:
                     return pNode.val
                 else:
-                    raise KeyError('key not exists in the BST')
+                    raise KeyError('Key not exists in the BST')
         else:
-            raise KeyError('key not exists in the BST')
+            raise KeyError('Key not exists in the BST')
 
     def __getitem__(self, item):
         # return self.get(item)
         return self.GetUnrec(item)
 
-    def delete(self, key):
+    def _DeleteSituation1(self, node):
+        # node左右子树均不存在
+        # node.parent = None
+        if node.parent.left and node.key == node.parent.left.key:
+            node.parent.left = None
+        elif node.parent.right and node.key == node.parent.right.key:
+            node.parent.right = None
+        self.size -= 1
+        return
 
-        pass
+    def _DeleteSituation2(self, node):
+        # node左子树不存在
+        if node.key == node.parent.right.key:
+            node.parent.right = node.right
+        elif node.key == node.parent.left.key:
+            node.parent.left = node.right
+        self.size -= 1
+        return
+
+    def _DeleteSituation3(self, node):
+        # node右子树不存在
+        if node.key == node.parent.right.key:
+            node.parent.right = node.left
+        elif node.key == node.parent.left.key:
+            node.parent.left = node.left
+        self.size -= 1
+        return
+
+    def _DeleteSituation4(self, node):
+        # node左右子树均存在
+        # 遍历待删除节点的右子节点的左子树直到左子叶节点，将待删除节点替换为该左子叶节点
+        node_right = node.right
+        while node_right.left:
+            node_right = node_right.left
+        if node.parent:
+            if node.key == node.parent.right.key:
+                tmp = node
+                node.parent.right = node_right
+                node_right.right = tmp
+                self._DeleteSituation1(node_right)
+                self.size -= 1
+            elif node.key == node.parent.left.key:
+                tmp = node
+                node.parent.right = node_right
+                node_right.right = tmp
+                self._DeleteSituation1(node_right)
+                self.size -= 1
+        else:           # node.parent 不存在，即node为根节点
+            # node_right.left = node.left
+            # node_right.right = node.right
+            # node_right.parent = None
+            node.key = node_right.key
+            node.val = node_right.val
+            node_right.parent = None
+            self.size -= 1
+        return
+
+    def delete(self, key):
+        """
+        1. node = _get(key)
+        2.
+            ds1: 不存在任意子树;
+            ds2: 不存在左子树;
+            ds3: 不存在右子树;
+            ds4: 左右子树均存在.
+        :param key:
+        :return:
+        """
+        node = self.GetUnrecNode(key)
+        if node:
+            if node.left is None and node.right is None:            # ds1
+                self._DeleteSituation1(node)
+            elif node.left is None and node.right is not None:          # ds2
+                self._DeleteSituation2(node)
+            elif node.left is not None and node.right is None:          # ds3
+                self._DeleteSituation3(node)
+            elif node.left is not None and node.right is not None:          # ds4
+                self._DeleteSituation4(node)
+        else:
+            print('Key not exists in the BST, can not delete')
+        return
 
     def draw(self):
 
+        pass
+
+
+class AVLTree(TreeNode):
+    """
+    旋转操作：
+        0. “*子树的*子树导致了AVL树不平衡”：“*旋”
+        1. 右右：左旋
+        2. 左左：右旋
+        3. 左右：左右（旋）
+        4. 右左：右左（旋）
+    """
+    def __init__(self, key, val):
+        TreeNode.__init__(self, key, val, None, None, None)
+        self.BalanceFactor = 0
         pass
 
 
@@ -366,7 +478,12 @@ if __name__ == '__main__':
     # bst.MidOrder(bst.root)
 
     # print(bst[3])
-    # print(bst.get(113))
-    print(bst.GetUnrec(113), bst[115])
+    # print(bst.get(113))           # TODO
+    # print(bst.GetUnrec(113), bst[115])
 
+    print()
+    # bst.delete(1)
+    # bst.delete(11)
+    bst.delete(3)
+    print()
 
