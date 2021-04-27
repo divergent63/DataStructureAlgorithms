@@ -453,6 +453,13 @@ if __name__ == '__main__':
     bst.Put(6, 4.2)
     bst.Put(20, 111.2)
 
+    print()
+    # bst.delete(0)       # ds1
+    # bst.delete(4)       # ds2
+    # bst.delete(24)       # ds3
+    # bst.delete(3)       # ds4
+    bst.delete(1)       # ds4
+    print()
     #
     # print(bst)
     # bst.mid_order(bst.root)
@@ -481,11 +488,4 @@ if __name__ == '__main__':
     # print(bst.get(113))           # TODO
     # print(bst.GetUnrec(113), bst[115])
 
-    print()
-    # bst.delete(0)       # ds1
-    # bst.delete(4)       # ds2
-    # bst.delete(24)       # ds3
-    # bst.delete(3)       # ds4
-    bst.delete(1)       # ds4
-    print()
 
