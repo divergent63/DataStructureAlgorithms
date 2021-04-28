@@ -370,9 +370,74 @@ class BinarySearchTree():
             print('Key not exists in the BST, can not delete')
         return
 
-    def draw(self):
+    # def draw(self):
+    #     """
+    #     从上往下打印出二叉树的每个节点，同层节点从左至右打印。
+    #     :return:
+    #     """
+    #     CurrentNode = self.root
+    #     PrintLst = []
+    #     for i in range(self.size):
+    #         PrintLst.append([CurrentNode.key, CurrentNode.val])
+    #         if CurrentNode.left and CurrentNode.right:
+    #             PrintLst.append([CurrentNode.left.key, CurrentNode.left.val])
+    #             PrintLst.append([CurrentNode.right.key, CurrentNode.right.val])
+    #             # TODO
+    #         elif CurrentNode.left and not CurrentNode.right:
+    #             PrintLst.append([CurrentNode.left.key, CurrentNode.left.val])
+    #             CurrentNode = CurrentNode.left
+    #         elif not CurrentNode.left and CurrentNode.right:
+    #             PrintLst.append([CurrentNode.right.key, CurrentNode.right.val])
+    #             CurrentNode = CurrentNode.right
+    #
+    #     pass
 
-        pass
+    # @staticmethod
+    def _DropNone(self, lst):
+
+        StayIdx = []
+        for i in range(len(lst)):
+            if lst[i] != [None, None]:
+                StayIdx.append(i)
+        return [lst[StayIdx[i]] for i in range(len(StayIdx))]
+
+    def draw(self):
+        """
+        从上往下打印出二叉树的每个节点，同层节点从左至右打印。
+        :return:
+        """
+        if self.root is None:
+            return []
+        CurrentNode = self.root
+        CurrentNodeIniDepth = [self.root]
+        # CurrentNodeIniDepth = [self.root.left, self.root.right]
+
+        PrintLst = [[CurrentNode.key, CurrentNode.val]]
+        CurrentDepthLst = []
+        # PrintLst.append([CurrentNode.key, CurrentNode.val])
+        while True:
+            for i in range(len(CurrentNodeIniDepth)):
+                if CurrentNodeIniDepth.count(None) == len(CurrentNodeIniDepth):
+                    PrintLst = self._DropNone(PrintLst)
+                    return PrintLst
+                # PrintLst.append([CurrentNodeIniDepth[i].left.key, CurrentNodeIniDepth[i].left.val]) if CurrentNodeIniDepth[i].left is not None else PrintLst.append([None, None])
+                # PrintLst.append([CurrentNodeIniDepth[i].right.key, CurrentNodeIniDepth[i].right.val]) if CurrentNodeIniDepth[i].right is not None else PrintLst.append([None, None])
+                if CurrentNodeIniDepth[i]:
+                    PrintLst.append([CurrentNodeIniDepth[i].left.key, CurrentNodeIniDepth[i].left.val]) if CurrentNodeIniDepth[i].left is not None else PrintLst.append([None, None])
+                    PrintLst.append([CurrentNodeIniDepth[i].right.key, CurrentNodeIniDepth[i].right.val]) if CurrentNodeIniDepth[i].right is not None else PrintLst.append([None, None])
+                else:
+                    PrintLst.append([None, None])
+                    PrintLst.append([None, None])
+                # PrintLst.append([CurrentNodeIniDepth[i].left.key, CurrentNodeIniDepth[i].left.val, CurrentNodeIniDepth[i].right.key, CurrentNodeIniDepth[i].right.val])
+            for i in range(len(CurrentNodeIniDepth)):
+                if CurrentNodeIniDepth[i]:
+                    CurrentDepthLst.append(CurrentNodeIniDepth[i].left) if CurrentNodeIniDepth[i].left is not None else CurrentDepthLst.append(None)
+                    CurrentDepthLst.append(CurrentNodeIniDepth[i].right) if CurrentNodeIniDepth[i].right is not None else CurrentDepthLst.append(None)
+                else:
+                    CurrentDepthLst.append(None)
+                    CurrentDepthLst.append(None)
+            CurrentNodeIniDepth = CurrentDepthLst
+            CurrentDepthLst = []
 
 
 class AVLTree(TreeNode):
@@ -453,12 +518,14 @@ if __name__ == '__main__':
     bst.Put(6, 4.2)
     bst.Put(20, 111.2)
 
+    print(bst.draw())
+
     print()
     # bst.delete(0)       # ds1
     # bst.delete(4)       # ds2
     # bst.delete(24)       # ds3
     # bst.delete(3)       # ds4
-    bst.delete(1)       # ds4
+    # bst.delete(1)       # ds4
     print()
     #
     # print(bst)
