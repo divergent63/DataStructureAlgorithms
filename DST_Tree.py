@@ -401,7 +401,7 @@ class BinarySearchTree():
                 StayIdx.append(i)
         return [lst[StayIdx[i]] for i in range(len(StayIdx))]
 
-    def draw(self):
+    def Draw(self, dropna=True):
         """
         从上往下打印出二叉树的每个节点，同层节点从左至右打印。
         :return:
@@ -410,34 +410,32 @@ class BinarySearchTree():
             return []
         CurrentNode = self.root
         CurrentNodeIniDepth = [self.root]
-        # CurrentNodeIniDepth = [self.root.left, self.root.right]
-
         PrintLst = [[CurrentNode.key, CurrentNode.val]]
-        CurrentDepthLst = []
+        NextDepthLst = []
         # PrintLst.append([CurrentNode.key, CurrentNode.val])
         while True:
             for i in range(len(CurrentNodeIniDepth)):
                 if CurrentNodeIniDepth.count(None) == len(CurrentNodeIniDepth):
-                    PrintLst = self._DropNone(PrintLst)
+                    if dropna:
+                        PrintLst = self._DropNone(PrintLst)
                     return PrintLst
-                # PrintLst.append([CurrentNodeIniDepth[i].left.key, CurrentNodeIniDepth[i].left.val]) if CurrentNodeIniDepth[i].left is not None else PrintLst.append([None, None])
-                # PrintLst.append([CurrentNodeIniDepth[i].right.key, CurrentNodeIniDepth[i].right.val]) if CurrentNodeIniDepth[i].right is not None else PrintLst.append([None, None])
                 if CurrentNodeIniDepth[i]:
                     PrintLst.append([CurrentNodeIniDepth[i].left.key, CurrentNodeIniDepth[i].left.val]) if CurrentNodeIniDepth[i].left is not None else PrintLst.append([None, None])
                     PrintLst.append([CurrentNodeIniDepth[i].right.key, CurrentNodeIniDepth[i].right.val]) if CurrentNodeIniDepth[i].right is not None else PrintLst.append([None, None])
                 else:
                     PrintLst.append([None, None])
                     PrintLst.append([None, None])
-                # PrintLst.append([CurrentNodeIniDepth[i].left.key, CurrentNodeIniDepth[i].left.val, CurrentNodeIniDepth[i].right.key, CurrentNodeIniDepth[i].right.val])
+
             for i in range(len(CurrentNodeIniDepth)):
                 if CurrentNodeIniDepth[i]:
-                    CurrentDepthLst.append(CurrentNodeIniDepth[i].left) if CurrentNodeIniDepth[i].left is not None else CurrentDepthLst.append(None)
-                    CurrentDepthLst.append(CurrentNodeIniDepth[i].right) if CurrentNodeIniDepth[i].right is not None else CurrentDepthLst.append(None)
+                    NextDepthLst.append(CurrentNodeIniDepth[i].left) if CurrentNodeIniDepth[i].left is not None else NextDepthLst.append(None)
+                    NextDepthLst.append(CurrentNodeIniDepth[i].right) if CurrentNodeIniDepth[i].right is not None else NextDepthLst.append(None)
                 else:
-                    CurrentDepthLst.append(None)
-                    CurrentDepthLst.append(None)
-            CurrentNodeIniDepth = CurrentDepthLst
-            CurrentDepthLst = []
+                    NextDepthLst.append(None)
+                    NextDepthLst.append(None)
+
+            CurrentNodeIniDepth = NextDepthLst
+            NextDepthLst = []
 
 
 class AVLTree(TreeNode):
@@ -518,7 +516,7 @@ if __name__ == '__main__':
     bst.Put(6, 4.2)
     bst.Put(20, 111.2)
 
-    print(bst.draw())
+    print(bst.Draw())
 
     print()
     # bst.delete(0)       # ds1
