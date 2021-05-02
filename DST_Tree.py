@@ -441,7 +441,7 @@ class BinarySearchTree():
 class AVLTree(TreeNode):
     """
     旋转操作：
-        0. “*子树的*子树导致了AVL树不平衡”：“*旋”
+        *. “*子树的*子树导致了AVL树不平衡”：“*旋”
         1. 右右：左旋
         2. 左左：右旋
         3. 左右：左右（旋）
@@ -450,6 +450,75 @@ class AVLTree(TreeNode):
     def __init__(self, key, val):
         TreeNode.__init__(self, key, val, None, None, None)
         self.BalanceFactor = 0
+
+    def RotateLeft(self, CurrentNode, ParentNode):
+        # parent.BalanceFactor = 2; current.BalanceFactor = 1
+        ParentNode.right = CurrentNode.left
+        CurrentNode.left.parent = ParentNode
+        CurrentNode.left = ParentNode
+        ParentNode.parent = CurrentNode
+
+        CurrentNode.BalanceFactor = 0
+        ParentNode.BalanceFactor = 0
+        return CurrentNode
+
+    def RotateRight(self, CurrentNode, ParentNode):
+        # parent.BalanceFactor = -2; current.BalanceFactor = -1
+        ParentNode.left = CurrentNode.right
+        CurrentNode.right.parent = ParentNode
+        CurrentNode.right = ParentNode
+        ParentNode.parent = CurrentNode
+
+        CurrentNode.BalanceFactor = 0
+        ParentNode.BalanceFactor = 0
+        return CurrentNode
+
+    def RotateLeftThenRight(self, CurrentNode, ParentNode):
+        InsertNode = CurrentNode.right
+
+        s1 = CurrentNode.left
+        s2 = InsertNode.left
+        s3 = InsertNode.right
+        s4 = ParentNode.right
+
+        ## RL
+        CurrentNode.right = s2
+        InsertNode.left = CurrentNode
+        ParentNode.left = InsertNode
+
+        ## RR
+        ParentNode.left = s3
+        InsertNode.right = ParentNode
+
+        CurrentNode.BalanceFactor = 0
+        ParentNode.BalanceFactor = 0
+        InsertNode.BalanceFactor = 0
+        return InsertNode
+
+    def RotateRightThenLeft(self, CurrentNode, ParentNode):
+        InsertNode = CurrentNode.left
+
+        s1 = ParentNode.left
+        s2 = InsertNode.left
+        s3 = InsertNode.right
+        s4 = CurrentNode.right
+
+        ## RR
+        CurrentNode.left = s3
+        InsertNode.right = CurrentNode
+        ParentNode.right = InsertNode
+
+        ## RL
+        ParentNode.right = s2
+        InsertNode.left = ParentNode
+
+        CurrentNode.BalanceFactor = 0
+        ParentNode.BalanceFactor = 0
+        InsertNode.BalanceFactor = 0
+        return InsertNode
+
+    def insert_unrec(self):
+
         pass
 
 
