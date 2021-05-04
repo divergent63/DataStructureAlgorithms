@@ -455,6 +455,7 @@ class AVLTree(TreeNode):
         # parent.BalanceFactor = 2; current.BalanceFactor = 1
         ParentNode.right = CurrentNode.left
         CurrentNode.left.parent = ParentNode
+        
         CurrentNode.left = ParentNode
         ParentNode.parent = CurrentNode
 
@@ -466,6 +467,7 @@ class AVLTree(TreeNode):
         # parent.BalanceFactor = -2; current.BalanceFactor = -1
         ParentNode.left = CurrentNode.right
         CurrentNode.right.parent = ParentNode
+
         CurrentNode.right = ParentNode
         ParentNode.parent = CurrentNode
 
@@ -486,13 +488,31 @@ class AVLTree(TreeNode):
         InsertNode.left = CurrentNode
         ParentNode.left = InsertNode
 
+        if s2 is not None:
+            s2.parent = CurrentNode
+        CurrentNode.parent = InsertNode
+        InsertNode.parent = ParentNode
+        ## RL
+
         ## RR
         ParentNode.left = s3
         InsertNode.right = ParentNode
 
-        CurrentNode.BalanceFactor = 0
-        ParentNode.BalanceFactor = 0
-        InsertNode.BalanceFactor = 0
+        if s3 is not None:
+            s3.parent = ParentNode
+        ParentNode.parent = InsertNode
+        ## RR
+
+        if InsertNode.BalanceFactor < 0:
+            CurrentNode.BalanceFactor = 1
+            ParentNode.BalanceFactor = 0
+        elif InsertNode.BalanceFactor > 0:
+            CurrentNode.BalanceFactor = 0
+            ParentNode.BalanceFactor = -1
+        else:           # InsertNode.BalanceFactor = 0, InsertNode为叶节点
+            CurrentNode.BalanceFactor = 0
+            ParentNode.BalanceFactor = 0
+        # InsertNode.BalanceFactor = 0
         return InsertNode
 
     def RotateRightThenLeft(self, CurrentNode, ParentNode):
@@ -508,16 +528,70 @@ class AVLTree(TreeNode):
         InsertNode.right = CurrentNode
         ParentNode.right = InsertNode
 
+        if s3 is not None:
+            s3.parent = CurrentNode
+        CurrentNode.parent = InsertNode
+        InsertNode.parent = ParentNode
+        ## RR
+
         ## RL
         ParentNode.right = s2
         InsertNode.left = ParentNode
 
-        CurrentNode.BalanceFactor = 0
-        ParentNode.BalanceFactor = 0
-        InsertNode.BalanceFactor = 0
+        if s2 is not None:
+            s2.parent = ParentNode
+        ParentNode.parent = InsertNode
+        ## RL
+
+        if InsertNode.BalanceFactor < 0:
+            CurrentNode.BalanceFactor = 0
+            ParentNode.BalanceFactor = 1
+        elif InsertNode.BalanceFactor > 0:
+            CurrentNode.BalanceFactor = -1
+            ParentNode.BalanceFactor = 0
+        else:           # InsertNode.BalanceFactor = 0, InsertNode为叶节点
+            CurrentNode.BalanceFactor = 0
+            ParentNode.BalanceFactor = 0
+        # InsertNode.BalanceFactor = 0
         return InsertNode
 
-    def insert_unrec(self):
+    def _put(self, key, val, tnod):
+        # NOT USED
+        # recursion version
+        if tnod is not None:
+            if tnod.key > key:
+                if tnod.left is not None:
+                    self._put(key, val, tnod.left)
+                elif tnod.left is None:
+                    tnod.left = TreeNode(key=key, val=val, left=None, right=None, parent=tnod)
+            elif tnod.key < key:
+                if tnod.right is not None:
+                    self._put(key, val, tnod.right)
+                elif tnod.right is None:
+                    tnod.right = TreeNode(key=key, val=val, left=None, right=None, parent=tnod)
+
+    def PutUnrec(self, key, val):
+        # BinarySearchTree.Put(BST, key, val)
+        if self.root is None:
+            self.root = TreeNode(key=key, val=val, left=None, right=None, parent=None)
+        else:
+            CurrentNode = self.root
+            while CurrentNode is not None:          # 假设插入key一定不与已有key重复
+                if CurrentNode.key > key:
+                    if CurrentNode.left is None:
+                        CurrentNode.left = TreeNode(key=key, val=val, left=None, right=None, parent=None)
+                    else:
+                        CurrentNode = CurrentNode.left
+                elif CurrentNode.key < key:
+                    if CurrentNode.right is None:
+                        CurrentNode.right = TreeNode(key=key, val=val, left=None, right=None, parent=None)
+                    else:           # CurrentNode.right is not None
+                        CurrentNode = CurrentNode.right
+
+                # self._put(key, val, self.root)
+        # self.size += 1
+
+        if self.BalanceFactor > 0:
 
         pass
 
