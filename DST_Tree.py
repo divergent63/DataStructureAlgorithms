@@ -438,7 +438,13 @@ class BinarySearchTree():
             NextDepthLst = []
 
 
-class AVLTree(TreeNode):
+class AVLNode(TreeNode):
+    def __init__(self, key, val, parent):
+        TreeNode.__init__(self, key, val, None, None, parent)
+        self.BalanceFactor = 0
+
+
+class AVLTree(BinarySearchTree):
     """
     旋转操作：
         *. “*子树的*子树导致了AVL树不平衡”：“*旋”
@@ -447,15 +453,18 @@ class AVLTree(TreeNode):
         3. 左右：左右（旋）
         4. 右左：右左（旋）
     """
-    def __init__(self, key, val):
-        TreeNode.__init__(self, key, val, None, None, None)
+    def __init__(self, root=None):
+        BinarySearchTree.__init__(self, root)
         self.BalanceFactor = 0
 
     def RotateLeft(self, CurrentNode, ParentNode):
         # parent.BalanceFactor = 2; current.BalanceFactor = 1
-        ParentNode.right = CurrentNode.left
-        CurrentNode.left.parent = ParentNode
-        
+        s2 = CurrentNode.left
+
+        ParentNode.right = s2
+        if s2 is not None:
+            s2.parent = ParentNode
+
         CurrentNode.left = ParentNode
         ParentNode.parent = CurrentNode
 
@@ -465,8 +474,11 @@ class AVLTree(TreeNode):
 
     def RotateRight(self, CurrentNode, ParentNode):
         # parent.BalanceFactor = -2; current.BalanceFactor = -1
-        ParentNode.left = CurrentNode.right
-        CurrentNode.right.parent = ParentNode
+        s2 = CurrentNode.right
+
+        ParentNode.left = s2
+        if s2 is not None:
+            s2.parent = ParentNode
 
         CurrentNode.right = ParentNode
         ParentNode.parent = CurrentNode
@@ -491,7 +503,7 @@ class AVLTree(TreeNode):
         if s2 is not None:
             s2.parent = CurrentNode
         CurrentNode.parent = InsertNode
-        InsertNode.parent = ParentNode
+        # InsertNode.parent = ParentNode
         ## RL
 
         ## RR
@@ -531,7 +543,7 @@ class AVLTree(TreeNode):
         if s3 is not None:
             s3.parent = CurrentNode
         CurrentNode.parent = InsertNode
-        InsertNode.parent = ParentNode
+        # InsertNode.parent = ParentNode
         ## RR
 
         ## RL
@@ -543,7 +555,7 @@ class AVLTree(TreeNode):
         ParentNode.parent = InsertNode
         ## RL
 
-        if InsertNode.BalanceFactor < 0:
+        if InsertNode.BalanceFactor < 0:            # BalanceFactor = H(左子树) - H(右子树)
             CurrentNode.BalanceFactor = 0
             ParentNode.BalanceFactor = 1
         elif InsertNode.BalanceFactor > 0:
@@ -572,28 +584,145 @@ class AVLTree(TreeNode):
 
     def PutUnrec(self, key, val):
         # BinarySearchTree.Put(BST, key, val)
+        CurrentNode = self.root
+
+        # Forward Pass: Insert
         if self.root is None:
-            self.root = TreeNode(key=key, val=val, left=None, right=None, parent=None)
+            self.root = AVLNode(key=key, val=val, parent=None)
+            InsertNode = self.root
         else:
-            CurrentNode = self.root
             while CurrentNode is not None:          # 假设插入key一定不与已有key重复
                 if CurrentNode.key > key:
                     if CurrentNode.left is None:
-                        CurrentNode.left = TreeNode(key=key, val=val, left=None, right=None, parent=None)
+                        CurrentNode.left = AVLNode(key=key, val=val, parent=CurrentNode.parent)
+                        # CurrentNode.BalanceFactor += 1
+
+                        InsertNode = CurrentNode.left
+                        InsertNode.parent = CurrentNode
+                        break
                     else:
                         CurrentNode = CurrentNode.left
                 elif CurrentNode.key < key:
                     if CurrentNode.right is None:
-                        CurrentNode.right = TreeNode(key=key, val=val, left=None, right=None, parent=None)
+                        CurrentNode.right = AVLNode(key=key, val=val, parent=CurrentNode.parent)
+                        # CurrentNode.BalanceFactor += -1
+
+                        InsertNode = CurrentNode.right
+                        InsertNode.parent = CurrentNode
+                        break
                     else:           # CurrentNode.right is not None
                         CurrentNode = CurrentNode.right
+                else:           # CurrentNode.key == key
+                    return
 
-                # self._put(key, val, self.root)
-        # self.size += 1
+        # Backward Pass: 1. Update BalanceFactor; 2. Update Rotation according to BalanceFactor
+        while InsertNode.parent is not None:
+            if InsertNode.parent.left == InsertNode:            # 插入导致树左倾，即InsertNode为CurrentNode的左子节点
+                if CurrentNode.BalanceFactor > 0:           # 未插入新节点时当前节点的原BalanceFactor=1，插入新节点后当前节点的BalanceFactor=1+1=2
+                    ppi = InsertNode.parent.parent          # InsertNode实际上已经被其他else更新为CurrentNode
+                    pi = InsertNode.parent
+                    if InsertNode.BalanceFactor < 0:            # 当前节点左倾且插入节点所在子数为当前节点的右子树，即“左右-->先左旋后右旋”
+                        NewNode = self.RotateLeftThenRight(InsertNode, pi)          # 此处InsertNode与RotateLeftThenRight函数中InsertNode无关联，可考虑更名为UpdatedNode
+                        NewNode.BalanceFactor = 0           # 完成旋转操作后BalanceFactor重置为0
+                    else:           # InsertNode.BalanceFactor > 0， 当前节点左倾且插入节点所在子数为当前节点的左子树，即“左左-->右旋”
+                        NewNode = self.RotateRight(InsertNode, pi)
+                        NewNode.BalanceFactor = 0
+                elif CurrentNode.BalanceFactor < 0:         # 未插入新节点时当前节点的原BalanceFactor=-1
+                    CurrentNode.BalanceFactor = 0
+                    break
+                else:           # 未插入新节点时当前节点的原BalanceFactor=0
+                    CurrentNode.BalanceFactor += 1
+                    InsertNode = InsertNode.parent
+                    CurrentNode = CurrentNode.parent
+                    continue
+            elif InsertNode.parent.right == InsertNode:         # 插入导致树右倾，即InsertNode为CurrentNode的右子节点
+                if CurrentNode.BalanceFactor < 0:
+                    ppi = InsertNode.parent.parent
+                    pi = InsertNode.parent
+                    if InsertNode.BalanceFactor > 0:
+                        NewNode = self.RotateRightThenLeft(InsertNode, pi)
+                        NewNode.BalanceFactor = 0
+                    else:
+                        NewNode = self.RotateLeft(InsertNode, pi)
+                        NewNode.BalanceFactor = 0
+                elif CurrentNode.BalanceFactor > 0:
+                    CurrentNode.BalanceFactor = 0
+                    break
+                else:
+                    CurrentNode.BalanceFactor -= 1
+                    InsertNode = InsertNode.parent
+                    CurrentNode = CurrentNode.parent
+                    continue
 
-        if self.BalanceFactor > 0:
+            NewNode.parent = ppi
+            if ppi is not None:
+                if pi == ppi.left:
+                    ppi.left = NewNode
+                else:
+                    ppi.right = NewNode
+            else:
+                self.root = NewNode
 
-        pass
+        """
+        while CurrentNode.parent is not None:
+        # while InsertNode.parent is not None:          # TODO: CurrentNode should be InsertNode ??
+            if CurrentNode.parent.left == CurrentNode:          # BalanceFactor += 1
+                if CurrentNode.parent.BalanceFactor == 2:           # BalanceFactor=1+1=2
+                    pParentNode = CurrentNode.parent.parent
+                    ParentNode = CurrentNode.parent
+                    if InsertNode == CurrentNode.left:           # 左左 --> 右旋
+                        NewNode = self.RotateRight(CurrentNode, ParentNode)
+
+                        # NewNode.parent = None
+                        NewNode.BalanceFactor = 0
+                    else:                   # InsertNode == CurrentNode.right, 左右 --> 左旋后右旋
+                        NewNode = self.RotateLeftThenRight(CurrentNode, ParentNode)
+
+                        # NewNode.parent = None
+                        NewNode.BalanceFactor = 0
+                elif CurrentNode.parent.BalanceFactor == 1:
+                    CurrentNode.BalanceFactor = 0
+                    break
+                else:           # CurrentNode.parent.BalanceFactor == 0
+                    CurrentNode.BalanceFactor += 1
+                    CurrentNode.parent.BalanceFactor += 1
+                    # CurrentNode = CurrentNode.parent
+                    continue
+            elif CurrentNode.parent.right == CurrentNode:           # BalanceFactor -= 1
+                if CurrentNode.BalanceFactor < 0:           # BalanceFactor=-1-1=-2
+                    pParentNode = CurrentNode.parent.parent
+                    ParentNode = CurrentNode.parent
+                    if InsertNode == CurrentNode.right:           # 右右 --> 左旋
+                        NewNode = self.RotateLeft(CurrentNode, CurrentNode.parent)
+                        # NewNode.parent = None
+                        NewNode.BalanceFactor = 0
+                    else:                   # InsertNode.parent == CurrentNode.left, 右左 --> 右旋后左旋
+                        NewNode = self.RotateRightThenLeft(CurrentNode, CurrentNode.parent)
+
+                        # NewNode.parent = None
+                        NewNode.BalanceFactor = 0
+                elif CurrentNode.BalanceFactor > 0:
+                    CurrentNode.BalanceFactor = 0
+                    break
+                else:
+                    CurrentNode.CurrentNode -= 1
+                    CurrentNode = CurrentNode.parent
+                    continue
+
+            # 连接 原来的CurrentNode.parent.parent 与 NewNode
+            NewNode.parent = pParentNode
+            if pParentNode is not None:           # TODO:
+                if ParentNode == pParentNode.left:
+                    pParentNode.left = NewNode
+                elif ParentNode == pParentNode.right:
+                    pParentNode.right = NewNode
+                break
+            else:
+                self.root = NewNode
+                # NewNode.parent = None
+                break
+        """
+        return
 
 
 if __name__ == '__main__':
@@ -634,40 +763,40 @@ if __name__ == '__main__':
     # bh3 = BinaryHeap()
     # print(bh3.BuildHeap(lst))
 
-    """
-    KeyTree:      1
-               /     \
-             0         3
-                    /    \
-                   2      12
-                        /    \
-                       4     24
-                        \    /
-                         5  20
-                          \
-                           6
-    """
-    bh4 = TreeNode(1, 0.8, None, None, None)
-    bst = BinarySearchTree(bh4)
-    bst.Put(0, 12.4)
-    bst.Put(3, 2.4)
-    bst.Put(2, 9.2)
-    bst.Put(12, 8.2)
-    bst.Put(4, 7.2)
-    bst.Put(24, 6.2)
-    bst.Put(5, 5.2)
-    bst.Put(6, 4.2)
-    bst.Put(20, 111.2)
-
-    print(bst.Draw())
-
-    print()
-    # bst.delete(0)       # ds1
-    # bst.delete(4)       # ds2
-    # bst.delete(24)       # ds3
-    # bst.delete(3)       # ds4
-    # bst.delete(1)       # ds4
-    print()
+    # """
+    # KeyTree:      1
+    #            /     \
+    #          0         3
+    #                 /    \
+    #                2      12
+    #                     /    \
+    #                    4     24
+    #                     \    /
+    #                      5  20
+    #                       \
+    #                        6
+    # """
+    # bh4 = TreeNode(1, 0.8, None, None, None)
+    # bst = BinarySearchTree(bh4)
+    # bst.Put(0, 12.4)
+    # bst.Put(3, 2.4)
+    # bst.Put(2, 9.2)
+    # bst.Put(12, 8.2)
+    # bst.Put(4, 7.2)
+    # bst.Put(24, 6.2)
+    # bst.Put(5, 5.2)
+    # bst.Put(6, 4.2)
+    # bst.Put(20, 111.2)
+    #
+    # print(bst.Draw())
+    #
+    # print()
+    # # bst.delete(0)       # ds1
+    # # bst.delete(4)       # ds2
+    # # bst.delete(24)       # ds3
+    # # bst.delete(3)       # ds4
+    # # bst.delete(1)       # ds4
+    # print()
     #
     # print(bst)
     # bst.mid_order(bst.root)
@@ -696,4 +825,12 @@ if __name__ == '__main__':
     # print(bst.get(113))           # TODO
     # print(bst.GetUnrec(113), bst[115])
 
+    avl = AVLTree(AVLNode(20, 2.0, None))
+    avl.PutUnrec(16, 1.6)
+    avl.PutUnrec(12, 1.2)
+    avl.PutUnrec(8, 0.8)
+    avl.PutUnrec(10, 1.0)           # TODO: node:10 .BalanceFactor = 1 ? should be 0
+    avl.PutUnrec(22, 2.2)
+    avl.PutUnrec(24, 2.4)
 
+    print(avl.PreOrder(avl))

@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c56797c6-8b88-44bc-ba8b-ce972611e4f6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/DataStructureAlgorithms.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DataStructureAlgorithms.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DST_Tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/DST_Tree.py" afterDir="false" />
     </list>
@@ -12,6 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/DataStructureAlgorithms$DST_Tree.coverage" NAME="DST_Tree Coverage Results" MODIFIED="1620205091362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DataStructureAlgorithms$searchAndFind.coverage" NAME="searchAndFind Coverage Results" MODIFIED="1618217241614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
@@ -38,12 +41,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1146" />
+          <entry key="py" value="3226" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1146" />
+          <entry key="Python" value="3226" />
         </counts>
       </usages-collector>
     </session>
@@ -56,11 +59,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DST_Tree.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="515" column="59" selection-start-line="515" selection-start-column="59" selection-end-line="515" selection-end-column="59" />
+            <state relative-caret-position="107">
+              <caret line="832" selection-start-line="832" selection-end-line="832" />
               <folding>
-                <element signature="e#15111#15603#0" />
-                <element signature="e#15673#16165#0" />
+                <element signature="e#19911#19926#1" />
+                <marker date="1620205091223" expanded="true" signature="14007:14145" ph="..." />
               </folding>
             </state>
           </provider>
@@ -80,7 +83,14 @@
       <find>_put</find>
       <find>PutUnrec</find>
       <find>Put</find>
+      <find>TreeNode</find>
+      <find>AVLNode</find>
+      <find>ParentNode</find>
+      <find>RotateRight</find>
     </findStrings>
+    <replaceStrings>
+      <replace>InsertNode</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -283,23 +293,22 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="696" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26213592" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3291815" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.38790035" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.3291815" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3291815" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3291815" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -396,31 +405,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/DST_Tree.py</url>
-          <line>691</line>
-          <option name="timeStamp" value="154" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/DST_Tree.py</url>
-          <line>692</line>
-          <option name="timeStamp" value="155" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/DST_Tree.py</url>
-          <line>693</line>
-          <option name="timeStamp" value="156" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/DST_Tree.py</url>
-          <line>690</line>
-          <option name="timeStamp" value="157" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/DST_Tree.py</url>
-          <line>695</line>
-          <option name="timeStamp" value="158" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/DST_Tree.py</url>
           <line>331</line>
           <option name="timeStamp" value="161" />
         </line-breakpoint>
@@ -431,20 +415,64 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/DST_Tree.py</url>
-          <line>694</line>
-          <option name="timeStamp" value="163" />
+          <line>835</line>
+          <option name="timeStamp" value="164" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DST_Tree.py</url>
+          <line>831</line>
+          <option name="timeStamp" value="253" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DST_Tree.py</url>
+          <line>832</line>
+          <option name="timeStamp" value="265" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>avl.root</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>InsertNode</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>CurrentNode</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.root</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>avl</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/DST_Tree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="515" column="59" selection-start-line="515" selection-start-column="59" selection-end-line="515" selection-end-column="59" />
+        <state relative-caret-position="107">
+          <caret line="832" selection-start-line="832" selection-end-line="832" />
           <folding>
-            <element signature="e#15111#15603#0" />
-            <element signature="e#15673#16165#0" />
+            <element signature="e#19911#19926#1" />
+            <marker date="1620205091223" expanded="true" signature="14007:14145" ph="..." />
           </folding>
         </state>
       </provider>
