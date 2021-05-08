@@ -61,4 +61,12 @@ class Graph():
         TODO: 可视化为邻接矩阵
         :return:
         """
+        for v in self.VertexDict:
+            pass
         pass
+
+    def __contains__(self, item):
+        return item in self.VertexDict
+
+    def __iter__(self):
+        return iter(self.VertexDict.values())

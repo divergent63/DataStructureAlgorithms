@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c56797c6-8b88-44bc-ba8b-ce972611e4f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DST_Graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/DataStructureAlgorithms.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DataStructureAlgorithms.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ALGO_BreadthFirstSearch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datasets/fourletterwords.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datasets/rawwords.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DST_Graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/DST_Graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/basic.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,20 +29,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>_put</find>
-      <find>PutUnrec</find>
-      <find>Put</find>
-      <find>TreeNode</find>
-      <find>AVLNode</find>
-      <find>ParentNode</find>
-      <find>RotateRight</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>InsertNode</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -53,8 +41,13 @@
   <component name="ProjectId" id="1qkrlVI2OnKz3T3bPyJag4fueyK" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/datasets" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\software\python_prj\courses\data_structure_and_algorithms\DataStructureAlgorithms\datasets" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -68,7 +61,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.DST_Tree">
+  <component name="RunManager" selected="Python.ALGO_BreadthFirstSearch">
+    <configuration name="ALGO_BreadthFirstSearch" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DataStructureAlgorithms" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ALGO_BreadthFirstSearch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="ALGO_Recursion" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DataStructureAlgorithms" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -135,28 +149,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="searchAndFind" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DataStructureAlgorithms" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/searchAndFind.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="sort" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DataStructureAlgorithms" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,19 +172,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.searchAndFind" />
       <item itemvalue="Python.sort" />
       <item itemvalue="Python.ALGO_Recursion" />
       <item itemvalue="Python.DST_HashTable" />
       <item itemvalue="Python.DST_Tree" />
+      <item itemvalue="Python.ALGO_BreadthFirstSearch" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ALGO_BreadthFirstSearch" />
         <item itemvalue="Python.DST_Tree" />
         <item itemvalue="Python.DST_HashTable" />
         <item itemvalue="Python.ALGO_Recursion" />
         <item itemvalue="Python.sort" />
-        <item itemvalue="Python.searchAndFind" />
       </list>
     </recent_temporary>
   </component>
@@ -292,6 +284,11 @@
           <url>file://$PROJECT_DIR$/DST_Tree.py</url>
           <line>835</line>
           <option name="timeStamp" value="164" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ALGO_BreadthFirstSearch.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="167" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
