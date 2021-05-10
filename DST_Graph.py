@@ -1,9 +1,12 @@
 
 class GraphNode():
     # Vertex of a graph G(V, E)
-    def __init__(self, v_key):
+    def __init__(self, v_key, pre=None, dis=None, state=0):         # state=0:该节点未探索; state=1:该节点正在探索; state=2:该节点已被探索
         self.vertex_id = v_key
         self.Adj = {}           # {Other vertex_id: Weight of the Other vertex_id}
+        self.Pre = pre
+        self.Dis = dis
+        self.State = state
         pass
 
     def AddAdj(self, other_key, edg_weight):
@@ -23,6 +26,7 @@ class GraphNode():
 
 
 class Graph():
+    # 单向(有)权图
     def __init__(self):
         # self.VertexDict = v_key_lst
         self.VertexDict = {}
@@ -36,11 +40,8 @@ class Graph():
             self.AddNode(v_key_1)
         if v_key_2 not in self.VertexDict:
             self.AddNode(v_key_2)
-        if v_key_1 not in self.VertexDict:
-            V = GraphNode(v_key_1)
-            if v_key_2 not in V.GetAdjIDs():
-                V.AddAdj(v_key_2, weight)
-            self.VertexDict[v_key_1] = V
+        if v_key_2 not in self.VertexDict[v_key_1].GetAdjIDs():
+            self.VertexDict[v_key_1].AddAdj(v_key_2, weight)
 
     def AdjustGraph(self, v_key, other_v_lst):
         V = GraphNode(v_key)
@@ -70,3 +71,16 @@ class Graph():
 
     def __iter__(self):
         return iter(self.VertexDict.values())
+
+
+# if __name__ == '__main__':
+#     g = Graph()
+#     NodLst = ['v%d' % i for i in range(10)]
+#     for x in NodLst:
+#         g.AddNode(x)
+#
+#     g.AddEdge(NodLst[0], NodLst[1], 0.5)
+#     g.AddEdge(NodLst[0], NodLst[-1], 0.1)
+#     g.AddEdge(NodLst[0], 'v100', 100)
+#     print()
+#     pass

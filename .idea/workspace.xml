@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c56797c6-8b88-44bc-ba8b-ce972611e4f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ALGO_BreadthFirstSearch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/fourletterwords.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/rawwords.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ALGO_BreadthFirstSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/ALGO_BreadthFirstSearch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DST_Graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/DST_Graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/basic.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -105,6 +102,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="DST_Graph" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DataStructureAlgorithms" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DST_Graph.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="DST_HashTable" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DataStructureAlgorithms" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -149,42 +167,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sort" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DataStructureAlgorithms" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sort.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Python.sort" />
       <item itemvalue="Python.ALGO_Recursion" />
       <item itemvalue="Python.DST_HashTable" />
       <item itemvalue="Python.DST_Tree" />
       <item itemvalue="Python.ALGO_BreadthFirstSearch" />
+      <item itemvalue="Python.DST_Graph" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.ALGO_BreadthFirstSearch" />
+        <item itemvalue="Python.DST_Graph" />
         <item itemvalue="Python.DST_Tree" />
         <item itemvalue="Python.DST_HashTable" />
         <item itemvalue="Python.ALGO_Recursion" />
-        <item itemvalue="Python.sort" />
       </list>
     </recent_temporary>
   </component>
@@ -287,7 +283,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/ALGO_BreadthFirstSearch.py</url>
-          <line>28</line>
+          <line>31</line>
           <option name="timeStamp" value="167" />
         </line-breakpoint>
       </breakpoints>
