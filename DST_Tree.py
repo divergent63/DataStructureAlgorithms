@@ -725,6 +725,40 @@ class AVLTree(BinarySearchTree):
         return
 
 
+# -*- coding:utf-8 -*-
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+lst = []
+
+
+class Solution:
+    def __init__(self):
+        self.lst = []
+
+    def MidOrder(self, pRoot):
+        if pRoot is not None:
+            self.MidOrder(pRoot.left)
+            self.lst.append(pRoot.key)
+            self.MidOrder(pRoot.right)
+        else:
+            return None
+
+    # 返回对应节点TreeNode
+    def KthNode(self, pRoot, k):
+        # write code here
+        if pRoot is None:
+            return None
+        else:
+            if k == 0:
+                return None
+            else:
+                self.MidOrder(pRoot)
+                return self.lst[k - 1]
+
+
 if __name__ == '__main__':
     # bt = BinaryTree(1).InsertLeft(3).InsertLeft(2).InsertRight(1.5)
     # # print(bt.GetLeftChild().GetRootVal())
@@ -825,12 +859,25 @@ if __name__ == '__main__':
     # print(bst.get(113))           # TODO
     # print(bst.GetUnrec(113), bst[115])
 
-    avl = AVLTree(AVLNode(20, 2.0, None))
-    avl.PutUnrec(16, 1.6)
-    avl.PutUnrec(12, 1.2)
-    avl.PutUnrec(8, 0.8)
-    avl.PutUnrec(10, 1.0)           # TODO: node:10 .BalanceFactor = 1 ? should be 0
-    avl.PutUnrec(22, 2.2)
-    avl.PutUnrec(24, 2.4)
+    # avl = AVLTree(AVLNode(20, 2.0, None))
+    # avl.PutUnrec(16, 1.6)
+    # avl.PutUnrec(12, 1.2)
+    # avl.PutUnrec(8, 0.8)
+    # avl.PutUnrec(10, 1.0)           # TODO: node:10 .BalanceFactor = 1 ? should be 0
+    # avl.PutUnrec(22, 2.2)
+    # avl.PutUnrec(24, 2.4)
+    #
+    # print(avl.PreOrder(avl))
 
-    print(avl.PreOrder(avl))
+    bt = BinarySearchTree(TreeNode(5, None, None, None, None))
+    bt.Put(8, None)
+    bt.Put(6, None)
+    bt.Put(10, None)
+    bt.Put(5, None)
+    bt.Put(7, None)
+    bt.Put(9, None)
+    bt.Put(11, None)
+    s = Solution()
+    print(s.KthNode(bt.root, 1))
+    print()
+

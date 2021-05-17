@@ -4,7 +4,7 @@ import time
 class sortMethod():
     def __init__(self, lst):
         self.lst = lst
-
+        self.mergeSortRes = []
         pass
 
     def bubbleSort(self):
@@ -70,9 +70,42 @@ class sortMethod():
 
         return self.lst
 
+    def RecurrsionAndMerge(self, lst):
+        if len(lst) <= 1:
+            return lst
+        else:
+            left = lst[:(len(lst)//2)]
+            right = lst[(len(lst)//2):]
+            left_sorted = self.RecurrsionAndMerge(left)
+            right_sorted = self.RecurrsionAndMerge(right)
+
+            merged = []
+            while left_sorted and right_sorted:
+                if left_sorted[0] > right_sorted[0]:
+                    merged.append(right_sorted.pop(0))
+                else:
+                    merged.append(left_sorted.pop(0))
+
+            merged.extend(left_sorted if left_sorted else right_sorted)
+            return merged
+
+    def mergeSort(self):
+
+        # if len(self.lst) <= 1:
+        #     return self.lst
+        # else:
+
+        # 1. 递归； 2. 合并
+        return self.RecurrsionAndMerge(self.lst)
+
+    def quickSort(self):
+
+        pass
+
 
 if __name__ == '__main__':
-    lst = [1, 3, 2, 16, 7, 11]
+    lst = [1, 3, 2, 16, 7, 11, 5]
+    # lst = []
 
     # # 4.67067289352417
     # start1 = time.time()
@@ -93,17 +126,25 @@ if __name__ == '__main__':
     # print(sortMethod(lst).insertionSort())
     # end3 = time.time()
 
-    # 7.26346230506897
-    start4 = time.time()
-    [sortMethod(lst).shellSort() for _ in range(int(10e5))]
-    print(sortMethod(lst).shellSort())
-    end4 = time.time()
+    # # 7.26346230506897
+    # start4 = time.time()
+    # [sortMethod(lst).shellSort() for _ in range(int(10e5))]
+    # print(sortMethod(lst).shellSort())
+    # end4 = time.time()
+
+    # 9.529287576675415
+    start5 = time.time()
+    # [sortMethod(lst).mergeSort() for _ in range(int(10e5))]
+    print(sortMethod(lst).mergeSort())
+    end5 = time.time()
 
     print(
+
         # end1 - start1,
         # end2 - start2,
         # end3 - start3,
-        end4 - start4
+        # end4 - start4,
+        end5 - start5
     )
     pass
 

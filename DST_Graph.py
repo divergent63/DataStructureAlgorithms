@@ -1,7 +1,7 @@
 
 class GraphNode():
     # Vertex of a graph G(V, E)
-    def __init__(self, v_key, pre=None, dis=None, state=0):         # state=0:该节点未探索; state=1:该节点正在探索; state=2:该节点已被探索
+    def __init__(self, v_key, pre=None, dis=0, state=0):         # state=0:该节点未探索; state=1:该节点正在探索; state=2:该节点已被探索
         self.vertex_id = v_key
         self.Adj = {}           # {Other vertex_id: Weight of the Other vertex_id}
         self.Pre = pre

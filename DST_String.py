@@ -6,7 +6,7 @@
 # @param pattern string字符串
 # @return bool布尔型
 #
-class Solution:
+class Solution1:
     def match(self, str, pattern):
         # write code here
         str_lst = list(str)
@@ -60,3 +60,21 @@ class Solution:
                 else:
                     return False
             return True
+
+
+# -*- coding:utf-8 -*-
+class Solution2:
+    def FirstNotRepeatingChar(self, s):
+        # write code here
+        if not s:
+            return -1
+        for i, x in enumerate(list(s)):
+            cnt = list(s).count(x)
+            if cnt == 1:
+                return i
+        return -1
+
+
+if __name__ == '__main__':
+    s = Solution2()
+    s.FirstNotRepeatingChar('google')

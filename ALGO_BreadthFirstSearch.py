@@ -32,44 +32,53 @@ def BuildWordGraph(file):
     return word_graph
 
 
-def BreadthFirstSearch(word_graph):
+def BreadthFirstSearch(word_graph, word_item):
     q = DST_Queue.queue_test()
-    for idx, word_item in enumerate(word_graph):
-        q.push(word_item)
 
-        word_item.state = 0
-        word_item.dis = 0
-        word_item.pre = None
-        # SetState(word_item, 0)
-        # SetDistance(word_item, 0)
-        # SetPre(word_item, None)
+    # for idx, word_item in enumerate(word_graph):
+    q.push(word_item)
 
-        if q is not None:
-            word_item.state = 1
-            for qnext_item in q.pop().GetAdjIDs:            # 获取所有邻节点
-                qnext_item.setColor(0)
-                # SetState(qnext_item, 0)
-            for qnext_item in q.pop().GetAdjIDs:  # 获取所有邻节点
-                if qnext_item.state == 0:           # 邻节点未探索
-                    q.push(qnext_item)
+    word_item.State = 0
+    word_item.Dis = 0
+    word_item.Pre = None
+    # SetState(word_item, 0)
+    # SetDistance(word_item, 0)
+    # SetPre(word_item, None)
 
-                    qnext_item.state = 1
-                    qnext_item.dis += 1
-                    qnext_item.pre = word_item
-                    # SetState(qnext_item, 1)
-                    # SetDistance(qnext_item, idx+1)          # 距离加1
-                    # SetPre(qnext_item, word_item)           # 设置qnext_item的前驱节点为word_item
+    while q.__sizeof__() > 0:
+        word_item.State = 1
+        next_node_all = q.pop().GetAdjIDs()
+        for qnext_item in list(next_node_all):            # 获取所有邻节点
+            word_graph.GetNode(qnext_item).State = 0
+            # SetState(qnext_item, 0)
+        for qnext_item in list(next_node_all):  # 获取所有邻节点
+            if word_graph.GetNode(qnext_item).State == 0:           # 邻节点未探索
+                q.push(word_graph.GetNode(qnext_item))
 
-            word_item.state = 2
+                word_graph.GetNode(qnext_item).State = 1
+                word_graph.GetNode(qnext_item).Dis += 1
+                word_graph.GetNode(qnext_item).Pre = word_item
+                # SetState(qnext_item, 1)
+                # SetDistance(qnext_item, idx+1)          # 距离加1
+                # SetPre(qnext_item, word_item)           # 设置qnext_item的前驱节点为word_item
+
+                word_item = word_graph.GetNode(qnext_item)
+
+        word_item.State = 2
 
     return word_graph
 
 
-def transverse(node):
-
-    pass
+def TransversePath(node):
+    path_lst = [node.GetVID()]
+    while node.Pre is not None:
+        path_lst.append(node.Pre.GetVID())
+        node = node.Pre
+    return path_lst
 
 
 if __name__ == '__main__':
 
-    BuildWordGraph('./datasets/fourletterwords.txt')
+    word_graph = BuildWordGraph('./datasets/fourletterwords.txt')
+    BreadthFirstSearch(word_graph, word_graph.GetNode('ABOS'))
+    print(TransversePath(word_graph.GetNode('ACID')))
