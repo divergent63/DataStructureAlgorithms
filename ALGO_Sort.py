@@ -90,11 +90,6 @@ class sortMethod():
             return merged
 
     def mergeSort(self):
-
-        # if len(self.lst) <= 1:
-        #     return self.lst
-        # else:
-
         # 1. 递归； 2. 合并
         return self.RecurrsionAndMerge(self.lst)
 

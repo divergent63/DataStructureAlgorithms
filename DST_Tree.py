@@ -663,65 +663,6 @@ class AVLTree(BinarySearchTree):
             else:
                 self.root = NewNode
 
-        """
-        while CurrentNode.parent is not None:
-        # while InsertNode.parent is not None:          # TODO: CurrentNode should be InsertNode ??
-            if CurrentNode.parent.left == CurrentNode:          # BalanceFactor += 1
-                if CurrentNode.parent.BalanceFactor == 2:           # BalanceFactor=1+1=2
-                    pParentNode = CurrentNode.parent.parent
-                    ParentNode = CurrentNode.parent
-                    if InsertNode == CurrentNode.left:           # 左左 --> 右旋
-                        NewNode = self.RotateRight(CurrentNode, ParentNode)
-
-                        # NewNode.parent = None
-                        NewNode.BalanceFactor = 0
-                    else:                   # InsertNode == CurrentNode.right, 左右 --> 左旋后右旋
-                        NewNode = self.RotateLeftThenRight(CurrentNode, ParentNode)
-
-                        # NewNode.parent = None
-                        NewNode.BalanceFactor = 0
-                elif CurrentNode.parent.BalanceFactor == 1:
-                    CurrentNode.BalanceFactor = 0
-                    break
-                else:           # CurrentNode.parent.BalanceFactor == 0
-                    CurrentNode.BalanceFactor += 1
-                    CurrentNode.parent.BalanceFactor += 1
-                    # CurrentNode = CurrentNode.parent
-                    continue
-            elif CurrentNode.parent.right == CurrentNode:           # BalanceFactor -= 1
-                if CurrentNode.BalanceFactor < 0:           # BalanceFactor=-1-1=-2
-                    pParentNode = CurrentNode.parent.parent
-                    ParentNode = CurrentNode.parent
-                    if InsertNode == CurrentNode.right:           # 右右 --> 左旋
-                        NewNode = self.RotateLeft(CurrentNode, CurrentNode.parent)
-                        # NewNode.parent = None
-                        NewNode.BalanceFactor = 0
-                    else:                   # InsertNode.parent == CurrentNode.left, 右左 --> 右旋后左旋
-                        NewNode = self.RotateRightThenLeft(CurrentNode, CurrentNode.parent)
-
-                        # NewNode.parent = None
-                        NewNode.BalanceFactor = 0
-                elif CurrentNode.BalanceFactor > 0:
-                    CurrentNode.BalanceFactor = 0
-                    break
-                else:
-                    CurrentNode.CurrentNode -= 1
-                    CurrentNode = CurrentNode.parent
-                    continue
-
-            # 连接 原来的CurrentNode.parent.parent 与 NewNode
-            NewNode.parent = pParentNode
-            if pParentNode is not None:           # TODO:
-                if ParentNode == pParentNode.left:
-                    pParentNode.left = NewNode
-                elif ParentNode == pParentNode.right:
-                    pParentNode.right = NewNode
-                break
-            else:
-                self.root = NewNode
-                # NewNode.parent = None
-                break
-        """
         return
 
 
