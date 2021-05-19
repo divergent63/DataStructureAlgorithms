@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+import math
 
 import DST_Graph
 import DST_Queue
@@ -33,6 +35,7 @@ def BuildWordGraph(file):
 
 
 def BreadthFirstSearch(word_graph, word_item):
+    # TODO: Wrong Answer
     q = DST_Queue.queue_test()
 
     # for idx, word_item in enumerate(word_graph):
@@ -77,8 +80,84 @@ def TransversePath(node):
     return path_lst
 
 
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+
+class Solution:
+    # 返回二维列表[[1,2],[4,5]]
+    def _DropNone(self, lst):
+
+        StayIdx = []
+        for i in range(len(lst)):
+            if lst[i] is not None:
+                StayIdx.append(i)
+        return [lst[StayIdx[i]] for i in range(len(StayIdx))]
+
+    def Print(self, pRoot):
+        # write code here
+        if pRoot is None:
+            return []
+        CurrentNode = pRoot
+        CurrentNodeIniDepth = [pRoot]
+        PrintLst = [CurrentNode.val]
+        results = []
+        NextDepthLst = []
+        # PrintLst.append([CurrentNode.key, CurrentNode.val])
+        while True:
+            for i in range(len(CurrentNodeIniDepth)):
+                if CurrentNodeIniDepth.count(None) == len(CurrentNodeIniDepth):
+                    PrintLstWihtLines = []
+                    for i in range(int(math.log2(len(PrintLst)))):
+                        PrintLstInLine = self._DropNone(PrintLst[int(2**(i)-1):int(2**(i+1))-1])
+                        PrintLstWihtLines.append(PrintLstInLine)
+                    print(PrintLstWihtLines)
+                    return PrintLstWihtLines
+                if CurrentNodeIniDepth[i]:
+                    PrintLst.append(CurrentNodeIniDepth[i].left.val) if CurrentNodeIniDepth[
+                                                                            i].left is not None else PrintLst.append(
+                        None)
+                    PrintLst.append(CurrentNodeIniDepth[i].right.val) if CurrentNodeIniDepth[
+                                                                             i].right is not None else PrintLst.append(
+                        None)
+                else:
+                    PrintLst.append(None)
+                    PrintLst.append(None)
+            # results.append(PrintLst)
+
+            for i in range(len(CurrentNodeIniDepth)):
+                if CurrentNodeIniDepth[i]:
+                    NextDepthLst.append(CurrentNodeIniDepth[i].left) if CurrentNodeIniDepth[
+                                                                            i].left is not None else NextDepthLst.append(
+                        None)
+                    NextDepthLst.append(CurrentNodeIniDepth[i].right) if CurrentNodeIniDepth[
+                                                                             i].right is not None else NextDepthLst.append(
+                        None)
+                else:
+                    NextDepthLst.append(None)
+                    NextDepthLst.append(None)
+
+            CurrentNodeIniDepth = NextDepthLst
+            NextDepthLst = []
+
+
 if __name__ == '__main__':
 
-    word_graph = BuildWordGraph('./datasets/fourletterwords.txt')
-    BreadthFirstSearch(word_graph, word_graph.GetNode('ABOS'))
-    print(TransversePath(word_graph.GetNode('ACID')))
+    # word_graph = BuildWordGraph('./datasets/fourletterwords.txt')
+    # BreadthFirstSearch(word_graph, word_graph.GetNode('ABOS'))
+    # print(TransversePath(word_graph.GetNode('ACID')))
+
+    # {8,6,10,5,7,9,11}
+    pRoot = TreeNode(8)
+    pRoot.left = TreeNode(6)
+    pRoot.right = TreeNode(10)
+    pRoot.left.left = TreeNode(5)
+    pRoot.left.right = TreeNode(7)
+    pRoot.right.left = TreeNode(9)
+    pRoot.right.right = TreeNode(11)
+    s = Solution()
+    s.Print(pRoot)
+    print()

@@ -94,13 +94,28 @@ class sortMethod():
         return self.RecurrsionAndMerge(self.lst)
 
     def quickSort(self):
-
+        for m in range(len(self.lst)):
+            mid_val = self.lst[m]
+            unsorted_lst = self.lst[m:]
+            exchange_before = []
+            exchange_after = []
+            i = 1
+            while i < len(lst):
+                if unsorted_lst[i] > mid_val:
+                    exchange_before.append([i, unsorted_lst[i]])
+                i += 1
+            j = len(unsorted_lst)
+            while j > 0:
+                if unsorted_lst[j] < mid_val:
+                    exchange_after.append([j, unsorted_lst[j]])
+                j -= 1
         pass
 
 
 if __name__ == '__main__':
-    lst = [1, 3, 2, 16, 7, 11, 5]
+    # lst = [1, 3, 2, 16, 7, 11, 5]
     # lst = []
+    lst = [54, 26, 93, 17, 77, 44, 55, 20]
 
     # # 4.67067289352417
     # start1 = time.time()
@@ -127,11 +142,17 @@ if __name__ == '__main__':
     # print(sortMethod(lst).shellSort())
     # end4 = time.time()
 
-    # 9.529287576675415
-    start5 = time.time()
+    # # 9.529287576675415
+    # start5 = time.time()
     # [sortMethod(lst).mergeSort() for _ in range(int(10e5))]
-    print(sortMethod(lst).mergeSort())
-    end5 = time.time()
+    # print(sortMethod(lst).mergeSort())
+    # end5 = time.time()
+
+    # 9.529287576675415
+    start6 = time.time()
+    [sortMethod(lst).quickSort() for _ in range(int(10e5))]
+    print(sortMethod(lst).quickSort())
+    end6 = time.time()
 
     print(
 
@@ -139,7 +160,8 @@ if __name__ == '__main__':
         # end2 - start2,
         # end3 - start3,
         # end4 - start4,
-        end5 - start5
+        # end5 - start5,
+        end6 - start6
     )
     pass
 

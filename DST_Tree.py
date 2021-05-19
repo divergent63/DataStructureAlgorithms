@@ -437,6 +437,51 @@ class BinarySearchTree():
             CurrentNodeIniDepth = NextDepthLst
             NextDepthLst = []
 
+    def Print(self, pRoot):
+        # JZ60 in newcoder: 从上到下按层打印二叉树，同一层结点从左至右输出。每一层输出一行。
+        if pRoot is None:
+            return []
+        CurrentNode = pRoot
+        CurrentNodeIniDepth = [pRoot]
+        PrintLst = [CurrentNode.val]
+        results = []
+        NextDepthLst = []
+        # PrintLst.append([CurrentNode.key, CurrentNode.val])
+        while True:
+            for i in range(len(CurrentNodeIniDepth)):
+                if CurrentNodeIniDepth.count(None) == len(CurrentNodeIniDepth):
+                    PrintLstWihtLines = []
+                    for i in range(int(math.log2(len(PrintLst)))):
+                        PrintLstInLine = self._DropNone(PrintLst[int(2**(i)-1):int(2**(i+1))-1])
+                        PrintLstWihtLines.append(PrintLstInLine)
+                    print(PrintLstWihtLines)
+                    return PrintLstWihtLines
+                if CurrentNodeIniDepth[i]:
+                    PrintLst.append(CurrentNodeIniDepth[i].left.val) if CurrentNodeIniDepth[
+                                                                            i].left is not None else PrintLst.append(
+                        None)
+                    PrintLst.append(CurrentNodeIniDepth[i].right.val) if CurrentNodeIniDepth[
+                                                                             i].right is not None else PrintLst.append(
+                        None)
+                else:
+                    PrintLst.append(None)
+                    PrintLst.append(None)
+            # results.append(PrintLst)
+
+            for i in range(len(CurrentNodeIniDepth)):
+                if CurrentNodeIniDepth[i]:
+                    NextDepthLst.append(CurrentNodeIniDepth[i].left) if CurrentNodeIniDepth[
+                                                                            i].left is not None else NextDepthLst.append(
+                        None)
+                    NextDepthLst.append(CurrentNodeIniDepth[i].right) if CurrentNodeIniDepth[
+                                                                             i].right is not None else NextDepthLst.append(
+                        None)
+                else:
+                    NextDepthLst.append(None)
+                    NextDepthLst.append(None)
+
+            CurrentNodeIniDepth = NextDepthLst
+            NextDepthLst = []
 
 class AVLNode(TreeNode):
     def __init__(self, key, val, parent):
