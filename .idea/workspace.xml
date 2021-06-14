@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c56797c6-8b88-44bc-ba8b-ce972611e4f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/ALGO_DynamicPrograming.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ALGO_BreadthFirstSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/ALGO_BreadthFirstSearch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DST_Graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/DST_Graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DST_String.py" beforeDir="false" afterPath="$PROJECT_DIR$/DST_String.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DST_Tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/DST_Tree.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +30,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DST_Tree.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="417">
@@ -43,6 +38,15 @@
               <folding>
                 <element signature="e#12251#13980#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="477">
+              <caret line="130" selection-start-line="130" selection-end-line="134" />
             </state>
           </provider>
         </entry>
@@ -96,10 +100,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1270" />
-    <option name="y" value="-10" />
-    <option name="width" value="1300" />
-    <option name="height" value="1460" />
+    <option name="width" value="869" />
+    <option name="height" value="605" />
   </component>
   <component name="ProjectId" id="1qkrlVI2OnKz3T3bPyJag4fueyK" />
   <component name="ProjectView">
@@ -123,7 +125,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../SCII" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -255,11 +257,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.DST_Tree" />
       <item itemvalue="Python.ALGO_BreadthFirstSearch" />
+      <item itemvalue="Python.ALGO_Sort" />
       <item itemvalue="Python.DST_Graph" />
       <item itemvalue="Python.DST_String" />
-      <item itemvalue="Python.ALGO_Sort" />
+      <item itemvalue="Python.DST_Tree" />
     </list>
     <recent_temporary>
       <list>
@@ -282,15 +284,16 @@
       <option name="presentableId" value="Default" />
       <updated>1617634579528</updated>
       <workItem from="1621174257901" duration="16390000" />
-      <workItem from="1621235683101" duration="16539000" />
+      <workItem from="1621235683101" duration="17148000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32929000" />
+    <option name="totallyTimeSpent" value="33538000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1166" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25249502" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -603,6 +606,13 @@
           <folding>
             <element signature="e#12251#13980#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="130" selection-start-line="130" selection-end-line="134" />
         </state>
       </provider>
     </entry>
